@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\kho;
 use Illuminate\Http\Request;
 
-class kho extends Controller
+
+class khocontroller extends Controller
 {
     public function index()
     {
-        $kho = \App\kho::latest()->paginate(5);
+        $kho = kho::latest()->paginate(5);
 
         return view('kho.index',compact('kho'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -37,7 +38,7 @@ class kho extends Controller
             '' => 'required',
         ]);
 
-        \App\kho::create($request->all());
+        kho::create($request->all());
 
         return redirect()->route('kho.index')
             ->with('success','kho created successfully.');
@@ -72,7 +73,7 @@ class kho extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, \App\kho $kho)
+    public function update(Request $request, kho $kho)
     {
         $request->validate([
             'name' => 'required',
@@ -91,7 +92,7 @@ class kho extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(\App\kho $kho)
+    public function destroy(kho $kho)
     {
         $kho->delete();
         return redirect()->route('kho.index')

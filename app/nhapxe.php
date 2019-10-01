@@ -14,7 +14,7 @@ class nhapxe extends Model
 
     }
     public function nhanvien(){
-        return $this->hasOne('App\nhanvien', 'nhanvien_id','id');
+        return $this->hasMany('App\nhanvien', 'nhanvien_id','id');
     }
     public function thongtinxe(){
         return $this->hasOne('App\thongtinxe', 'thongtinxe_id','id');

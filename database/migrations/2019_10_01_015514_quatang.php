@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Thongtinxe extends Migration
+class Quatang extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class Thongtinxe extends Migration
      */
     public function up()
     {
-        Schema::create('thongtinxe', function (Blueprint $table) {
+        Schema::create('quatang', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('loaixe');
-            $table->string('tenxe');
-            $table->string('doixe');
-            $table->string('mauxe');
-            $table->integer('sokhung');
-            $table->dateTime('somay');
+            $table->string('tenquatang');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class Thongtinxe extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('thongtinxe');
+        Schema::dropIfExists('quatang');
     }
 }
