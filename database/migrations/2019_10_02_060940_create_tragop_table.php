@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Quatang extends Migration
+class CreateTragopTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class Quatang extends Migration
      */
     public function up()
     {
-        Schema::create('quatang', function (Blueprint $table) {
+        Schema::create('tragop', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('tenquatang');
+            $table->string('loaitragop');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class Quatang extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quatang');
+        Schema::dropIfExists('tragop');
     }
 }

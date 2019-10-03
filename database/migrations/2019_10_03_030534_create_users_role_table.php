@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Khachhang extends Migration
+class CreateUsersRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class Khachhang extends Migration
      */
     public function up()
     {
-        Schema::create('khachhang', function (Blueprint $table) {
+        Schema::create('users_role', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('Hovaten');
-            $table->string('ngaysinh');
-            $table->string('sdt');
-            $table->string('diachi');
+            $table->string('name');
+            $table->string('note');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class Khachhang extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('khachhang');
+        Schema::dropIfExists('users_role');
     }
 }

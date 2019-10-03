@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Congno extends Migration
+class CreateCongnoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,6 @@ class Congno extends Migration
     {
         Schema::create('congno', function (Blueprint $table) {
             $table->bigIncrements('id');
-
             $table->dateTime('ngaymua');
             $table->integer('giaban');
             $table->integer('tratruoc');
@@ -23,14 +22,9 @@ class Congno extends Migration
             $table->integer('conlai');
             $table->integer('tientra');
             $table->dateTime('ngaytra');
-            $table->bigInteger('thongtinxe_id')->unsigned();
-
-            $table->bigInteger('khachhang_id')->unsigned();
-
+            $table->unsignedBigInteger('thongtinxe_id');
+            $table->unsignedBigInteger('khachhang_id');
             $table->timestamps();
-            $table->foreign('thongtinxe_id')->references('id')->on('thongtinxe');
-            $table->foreign('khachhang_id')->references('id')->on('khachhang');
-
         });
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Xuatnoibo extends Migration
+class CreateXuatnoiboTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,11 +18,9 @@ class Xuatnoibo extends Migration
             $table->integer('soHD');
             $table->string('tinhtrang');
             $table->dateTime('ngayxuat');
-            $table->bigInteger('thongtinxe_id')->unsigned();
-            $table->bigInteger('kho_id')->unsigned();
+            $table->unsignedBigInteger('thongtinxe_id');
+            $table->unsignedBigInteger('kho_id');
             $table->timestamps();
-            $table->foreign('thongtinxe_id')->references('id')->on('thongtinxe');
-            $table->foreign('kho_id')->references('id')->on('kho');
         });
     }
 

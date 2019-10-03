@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Banxi extends Migration
+class CreateBanxiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -21,11 +21,9 @@ class Banxi extends Migration
             $table->integer('giaban');
             $table->string('noixuat');
             $table->dateTime('ngayxuat');
-            $table->bigInteger('kho_id')->unsigned();
-            $table->bigInteger('thongtinxe_id')->unsigned();
+            $table->unsignedBigInteger('kho_id');
+            $table->unsignedBigInteger('thongtinxe_id');
             $table->timestamps();
-            $table->foreign('kho_id')->references('id')->on('kho');
-            $table->foreign('thongtinxe_id')->references('id')->on('thongtinxe');
         });
     }
 

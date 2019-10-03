@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Nhapxe extends Migration
+class CreateNhaxeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -22,13 +22,11 @@ class Nhapxe extends Migration
             $table->date('ngayhd');
             $table->integer('maID');
             $table->integer('gianhap');
-            $table->bigInteger('kho_id')->unsigned();
-            $table->bigInteger('nhanvien_id')->unsigned();
-            $table->bigInteger('thongtinxe_id')->unsigned();
+            $table->unsignedBigInteger('kho_id');
+            $table->unsignedBigInteger('nhanvien_id');
+            $table->unsignedBigInteger('thongtinxe_id');
+
             $table->timestamps();
-            $table->foreign('kho_id')->references('id')->on('kho');
-            $table->foreign('nhanvien_id')->references('id')->on('nhanvien');
-            $table->foreign('thongtinxe_id')->references('id')->on('thongtinxe');
         });
     }
 
@@ -39,6 +37,6 @@ class Nhapxe extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nhapxe');
+        Schema::dropIfExists('nhaxe');
     }
 }

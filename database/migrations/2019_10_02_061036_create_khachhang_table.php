@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Kho extends Migration
+class CreateKhachhangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class Kho extends Migration
      */
     public function up()
     {
-        Schema::create('kho', function (Blueprint $table) {
+        Schema::create('khachhang', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('dia_diem');
-            $table->string('name');
+            $table->string('Hovaten');
+            $table->string('ngaysinh');
+            $table->string('sdt');
+            $table->string('diachi');
             $table->timestamps();
-
         });
     }
 
@@ -29,6 +30,6 @@ class Kho extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kho');
+        Schema::dropIfExists('khachhang');
     }
 }

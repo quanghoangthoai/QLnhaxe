@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Tragop extends Migration
+class CreateKhoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class Tragop extends Migration
      */
     public function up()
     {
-        Schema::create('tragop', function (Blueprint $table) {
+        Schema::create('kho', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('loaitragop');
+            $table->string('dia_diem');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class Tragop extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tragop');
+        Schema::dropIfExists('kho');
     }
 }
