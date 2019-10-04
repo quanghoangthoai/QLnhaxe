@@ -13,4 +13,7 @@ class nhanvien extends Model
         return $this->belongsTo('App\nhapxe', 'nhanvien_id','id');
 
     }
+    public function banxe(){
+        return $this->belongsTo('App\nhanvien', 'nhanvien_id','id');
+    }
 }

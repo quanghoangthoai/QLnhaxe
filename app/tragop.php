@@ -10,4 +10,7 @@ class tragop extends Model
     protected $fillable = [
         'loaitragop'
     ];
+    public function banxe(){
+        return $this->belongsTo('App\banxe', 'tragop_id','id');
+    }
 }
