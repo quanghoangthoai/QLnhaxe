@@ -39,4 +39,5 @@ class User extends Authenticatable
     public function users_role(){
         return $this->belongsTo('App\user', 'users_id','id');
     }
+
 }

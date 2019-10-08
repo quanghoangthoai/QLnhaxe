@@ -15,3 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('kho','ProductController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
