@@ -6,27 +6,18 @@
                 <div class="danhmuc">
                     <span><i class="fas fa-bars"></i> Danh mục</span>
                 </div>
-
-                <a class="nav-link active" id="v-pills-moi-tab" data-toggle="pill" href="#v-pills-moi" role="tab" aria-controls="v-pills-moi" aria-selected="true">Mới</a>
-
-                <a class="nav-link" id="v-pills-banxe-tab" data-toggle="pill" href="#v-pills-banxe" role="tab" aria-controls="v-pills-banxe" aria-selected="false">Bán xe</a>
-
-                <a class="nav-link" id="v-pills-bansi-tab" data-toggle="pill" href="#v-pills-bansi" role="tab" aria-controls="v-pills-si" aria-selected="false">Bán sĩ</a>
-
-                <a class="nav-link" id="v-pills-congno-tab" data-toggle="pill" href="#v-pills-congno" role="tab" aria-controls="v-pills-congno" aria-selected="false">Công nợ</a>
-                <a class="nav-link" id="v-pills-khachhang-tab" data-toggle="pill" href="#v-pills-khachhang" role="tab" aria-controls="v-pills-khachhang" aria-selected="false">Khách hàng</a>
                 <a class="nav-link" id="v-pills-kho-tab" data-toggle="pill" href="#v-pills-kho" role="tab" aria-controls="v-pills-kho" aria-selected="false">Kho</a>
-                <a class="nav-link" id="v-pills-tk_quatang-tab" data-toggle="pill" href="#v-pills-tk_quatang" role="tab" aria-controls="v-pills-tk_quatang" aria-selected="false">TK Qùa tặng</a>
-                <a class="nav-link" id="v-pills-migrations-tab" data-toggle="pill" href="#v-pills-migrations" role="tab" aria-controls="v-pills-migrations" aria-selected="false">Migrations</a>
                 <a class="nav-link" id="v-pills-nhanvien-tab" data-toggle="pill" href="#v-pills-nhanvien" role="tab" aria-controls="v-pills-nhanvien" aria-selected="false">Nhân viên</a>
-                <a class="nav-link" id="v-pills-nhapxe-tab" data-toggle="pill" href="#v-pills-nhapxe" role="tab" aria-controls="v-pills-nhapxe" aria-selected="false">Nhập xe</a>
-                <a class="nav-link" id="v-pills-ps_resets-tab" data-toggle="pill" href="#v-pills-ps_resets" role="tab" aria-controls="v-pills-ps_resets" aria-selected="false">Password resets</a>
-                <a class="nav-link" id="v-pills-quatang-tab" data-toggle="pill" href="#v-pills-quatang" role="tab" aria-controls="v-pills-quatang" aria-selected="false">Quà tặng</a>
                 <a class="nav-link" id="v-pills-tt_xe-tab" data-toggle="pill" href="#v-pills-tt_xe" role="tab" aria-controls="v-pills-tt_xe" aria-selected="false">Thông tin xe</a>
-                <a class="nav-link" id="v-pills-tragop-tab" data-toggle="pill" href="#v-pills-tragop" role="tab" aria-controls="v-pills-tragop" aria-selected="false">Trả góp</a>
-                <a class="nav-link" id="v-pills-user-tab" data-toggle="pill" href="#v-pills-user" role="tab" aria-controls="v-pills-user" aria-selected="false">User</a>
-                <a class="nav-link" id="v-pills-user_role-tab" data-toggle="pill" href="#v-pills-user_role" role="tab" aria-controls="v-pills-user_role" aria-selected="false">User role</a>
+                <a class="nav-link" id="v-pills-khachhang-tab" data-toggle="pill" href="#v-pills-khachhang" role="tab" aria-controls="v-pills-khachhang" aria-selected="false">Khách hàng</a>
+                <a class="nav-link" id="v-pills-khachhang-tab" data-toggle="pill" href="#v-pills-khachhang" role="tab" aria-controls="v-pills-khachhang" aria-selected="false">Trả góp</a>
+                <a class="nav-link" id="v-pills-khachhang-tab" data-toggle="pill" href="#v-pills-khachhang" role="tab" aria-controls="v-pills-khachhang" aria-selected="false">Quà tặng</a>
+                <a class="nav-link" id="v-pills-nhapxe-tab" data-toggle="pill" href="#v-pills-nhapxe" role="tab" aria-controls="v-pills-nhapxe" aria-selected="false">Nhập xe</a>
+                <a class="nav-link" id="v-pills-khachhang-tab" data-toggle="pill" href="#v-pills-khachhang" role="tab" aria-controls="v-pills-khachhang" aria-selected="false">Bán xe</a>
+                <a class="nav-link" id="v-pills-tk_quatang-tab" data-toggle="pill" href="#v-pills-tk_quatang" role="tab" aria-controls="v-pills-tk_quatang" aria-selected="false">TK Qùa tặng</a>
+                <a class="nav-link" id="v-pills-congno-tab" data-toggle="pill" href="#v-pills-congno" role="tab" aria-controls="v-pills-congno" aria-selected="false">Công nợ</a>
                 <a class="nav-link" id="v-pills-xuat_nb-tab" data-toggle="pill" href="#v-pills-xuat_nb" role="tab" aria-controls="v-pills-xuat_nb" aria-selected="false">Xuất nội bộ</a>
+                <a class="nav-link" id="v-pills-khachhang-tab" data-toggle="pill" href="#v-pills-khachhang" role="tab" aria-controls="v-pills-khachhang" aria-selected="false">Bán sỉ</a>
             </div>
         </div>
         <div class="col-1"></div>

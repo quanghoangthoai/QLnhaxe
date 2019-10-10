@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>HEAD HONDA TƯ 2</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -68,24 +68,23 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">trang chủ</a>
                     @else
                         <a href="{{ route('login') }}">đăng nhập</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">đăng kí</a>
+                            <a href="{{ route('register') }}">đăng kí </a>
                         @endif
                     @endauth
                 </div>
             @endif
+                <div class="content" >
+                    <div class="title m-b-md" style="color: #4c110f" >
+                        HEAD HONDA TƯ  II
+                    </div>
+                    </div>
 
-            <div class="content" >
-                <div class="title m-b-md" style="color: #4c110f" >
-                    HEAD HONDA TƯ  II
-                </div>
 
-
-            </div>
         </div>
     </body>
 </html>
