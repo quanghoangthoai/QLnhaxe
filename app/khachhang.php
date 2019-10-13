@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class khachhang extends Model
 {
 
+    protected $table = 'khachhang';
     protected $fillable = [
-        'Hovaten', 'ngaysinh','sdt','diachi'
+        'hovaten', 'ngaysinh','sdt','diachi'
     ];
     public function congno(){
         return $this->belongsTo('App\congno', 'khachhang_id','id');
