@@ -19,5 +19,21 @@ Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/search', 'khachhangController@search');
 Route::resource('khachhang','khachhangController');
+
+Route::resource('nhanvien','nhanvienController');
+Route::get('/search', 'nhanvienController@search');
+
+Route::resource('kho','khoController');
+Route::get('/search', 'khoController@search');
+
+Route::resource('thongtinxe','xeController');
+Route::get('/search', 'xeController@search');
+
+Route::resource('quatang','quatangController');
+Route::get('/search', 'quatangController@search');
+
+Route::resource('tragop','tragopController');
+Route::get('/search', 'tragopController@search');

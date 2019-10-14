@@ -7,8 +7,33 @@
                     <span><i class="fas fa-bars"></i> Danh mục</span>
                 </div>
                 <li>
-                    <a href="{{ route('khachhang.index') }}">
+                    <a href="{{ route('khachhang.index') }}"class="nav-link">
                         <i class="fa fa-flag"></i> <span>khách hàng </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('nhanvien.index') }} " class="nav-link">
+                        <i class="fa fa-flag"></i> <span>nhân viên </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('kho.index') }} " class="nav-link">
+                        <i class="fa fa-flag"></i> <span>kho </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('thongtinxe.index') }} " class="nav-link">
+                        <i class="fa fa-flag"></i> <span>thông tin xe </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('quatang.index') }} " class="nav-link">
+                        <i class="fa fa-flag"></i> <span>quà tặng </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('tragop.index') }} " class="nav-link">
+                        <i class="fa fa-flag"></i> <span>trả góp </span>
                     </a>
                 </li>
 

@@ -10,9 +10,9 @@ class khachhangcontroller extends Controller
 {
     public function index()
     {
-        $khachhangs = khachhang::latest()->paginate(5);
+        $khachhangs = khachhang::latest()->paginate(10);
 
-        return view('khachhang.index',compact('khachhangs'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('khachhang.index',compact('khachhangs'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
     public function search (Request $request){
         $search =$request->get('search');

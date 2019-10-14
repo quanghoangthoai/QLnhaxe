@@ -1,17 +1,16 @@
-@extends('khachhang.layout')
-
+@extends('quatang.layout')
 @section('content')
-    <a href="{{ url('/home') }}">trang chủ</a>
+    <a href="{{ url('/home') }}" class="nav-link">trang chủ</a>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center">thông tin khách hàng </h2>
+            <h2 class="text-center">thông tin quà tặng </h2>
         </div>
         <div class="col-md-4" >
             <form action="/search" method="get" role="search">
                 {{ csrf_field() }}
                 <div class="input-group">
                     <input type="search" class="form-control" name="search"
-                           placeholder="tìm khách hàng"> <span class="input-group-btn">
+                           placeholder="tìm quà tặng"> <span class="input-group-btn">
             <button type="submit" class="btn btn-default">
                 tìm kiếm
                 <span class="glyphicon glyphicon-search"></span>
@@ -22,7 +21,7 @@
             </div>
         </div>
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
-            <a class="btn btn-success " href="{{ route('khachhang.create') }}"> thêm khách hàng</a>
+            <a class="btn btn-success " href="{{ route('quatang.create') }}"> thêm quà tặng</a>
         </div>
     </div>
 
@@ -32,28 +31,24 @@
         </div>
     @endif
 
-    @if(sizeof($khachhangs) > 0)
+    @if(sizeof($quatangs) > 0)
         <table class="table table-bordered">
             <tr>
                 <th>stt</th>
-                <th>Họ và tên </th>
-                <th>ngày sinh</th>
-                <th>số điện thoại</th>
-                <th>địa chỉ</th>
+                <th>tên quà tặng </th>
+
+
                 <th width="280px">More</th>
             </tr>
-            @foreach ($khachhangs as $khachhang)
+            @foreach ($quatangs as $quatang)
                 <tr>
                     <td>{{ ++$i }}</td>
-                    <td>{{ $khachhang->Hovaten }}</td>
-                    <td>{{ $khachhang->ngaysinh}}</td>
-                    <td>{{ $khachhang->sdt}}</td>
-                    <td>{{ $khachhang->diachi}}</td>
+                    <td>{{ $quatang->tenquatang }}</td>
                     <td>
-                        <form action="{{ route('khachhang.destroy',$khachhang->id) }}" method="POST">
+                        <form action="{{ route('quatang.destroy',$quatang->id) }}" method="POST">
 
-                            <a class="btn btn-info" href="{{ route('khachhang.show',$khachhang->id) }}">xem</a>
-                            <a class="btn btn-primary" href="{{ route('khachhang.edit',$khachhang->id) }}">sửa</a>
+                            <a class="btn btn-info" href="{{ route('quatang.show',$quatang->id) }}">xem</a>
+                            <a class="btn btn-primary" href="{{ route('quatang.edit',$quatang->id) }}">sửa</a>
 
                             @csrf
                             @method('DELETE')
@@ -70,5 +65,5 @@
     @endif
 
 
-    {!! $khachhangs->links() !!}
+    {!! $quatangs->links() !!}
 @endsection

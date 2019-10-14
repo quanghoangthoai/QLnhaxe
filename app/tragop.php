@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class tragop extends Model
 {
-
+    protected $table='tragop';
     protected $fillable = [
         'loaitragop'
     ];
