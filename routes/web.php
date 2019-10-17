@@ -37,3 +37,6 @@ Route::get('/search', 'quatangController@search');
 
 Route::resource('tragop','tragopController');
 Route::get('/search', 'tragopController@search');
+
+Route::resource('nhapxe','nhapxeController');
+Route::get('/search', 'nhapxeController@search');

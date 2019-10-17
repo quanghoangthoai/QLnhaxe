@@ -36,6 +36,11 @@
                         <i class="fa fa-flag"></i> <span>trả góp </span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('nhapxe.index') }} " class="nav-link">
+                        <i class="fa fa-flag"></i> <span>nhập xe </span>
+                    </a>
+                </li>
 
 
             </div>

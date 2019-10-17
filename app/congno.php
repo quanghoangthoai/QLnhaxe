@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class congno extends Model
 {
 
+    protected $table='congno';
     protected $fillable = [
         'ngaymua', 'giaban','tratruoc','tralan1','conlai','tientra','ngaytra','thongtinxe_id','	khachhang_id'
     ];
