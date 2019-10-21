@@ -11,12 +11,16 @@ class kho extends Model
         'dia_diem', 'name'
     ];
     public function nhapxe(){
-        return $this->belongsTo('App\nhapxe', 'kho_id','id');
+        return $this->hasMany('App\nhapxe', 'kho_id','id');
 }
     public function banxe(){
-        return $this->belongsTo('App\banxe', 'kho_id','id');
+        return $this->hasMany('App\banxe', 'kho_id','id');
     }
     public function banxi(){
-        return $this->belongsTo('App\banxi', 'kho_id','id');
+        return $this->hasMany('App\banxi', 'kho_id','id');
+    }
+    public function xuatnoibo()
+    {
+        return $this->hasMany('App\xuatnoibo', 'kho_id', 'id');
     }
 }

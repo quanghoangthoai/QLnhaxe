@@ -19,8 +19,8 @@ class CreateThongtinxeTable extends Migration
             $table->string('tenxe');
             $table->string('doixe');
             $table->string('mauxe');
-            $table->integer('sokhung');
-            $table->dateTime('somay');
+            $table->string('sokhung');
+            $table->string('somay');
             $table->timestamps();
         });
     }

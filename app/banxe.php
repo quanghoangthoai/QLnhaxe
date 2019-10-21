@@ -15,19 +15,19 @@ class banxe extends Model
         'tinh','thongtinxe_id','kho_id','tragop_id','nhanvien_id','quatang_id'
     ];
     public function quatang(){
-        return $this->hasMany('App\quatang', 'quatang_id','id');
+        return $this->belongsTo('App\quatang', 'quatang_id','id');
     }
     public function thongtinxe(){
-        return $this->hasMany('App\thongtinxe', 'thongtinxe_id','id');
+        return $this->belongsTo('App\thongtinxe', 'thongtinxe_id','id');
     }
     public function kho(){
-        return $this->hasMany('App\kho', 'kho_id','id');
+        return $this->belongsTo('App\kho', 'kho_id','id');
     }
     public function tragop(){
-        return $this->hasMany('App\tragop', 'tragop_id','id');
+        return $this->belongsTo('App\tragop', 'tragop_id','id');
     }
     public function nhanvien(){
-        return $this->hasMany('App\nhanvien', 'nhanvien_id','id');
+        return $this->belongsTo('App\nhanvien', 'nhanvien_id','id');
     }
 
 }

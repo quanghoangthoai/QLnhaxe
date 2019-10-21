@@ -13,9 +13,9 @@ class quatang extends Model
         'tenquatang'
     ];
     public function banxe(){
-        return $this->belongsTo('App\banxe', 'quatang_id','id');
+        return $this->hasMany('App\banxe', 'quatang_id','id');
     }
     public function ktquatang(){
-        return $this->belongsTo('App\ktquatang', 'quatang_id','id');
+        return $this->hasMany('App\ktquatang', 'quatang_id','id');
     }
 }

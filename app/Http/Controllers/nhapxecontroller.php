@@ -22,12 +22,12 @@ class nhapxecontroller extends Controller
         return view('nhapxe.index',compact('nhapxes'))->with('i', (request()->input('page', 1) - 1) * 5);
 
     }
-    public function create()
+    public function create( )
     {
-        $kho = kho::all();
-        $nhanvien=nhanvien::all();
-        $thongtinxe=thongtinxe::all();
-        return view('nhapxe.create',compact('nhanpxe','kho','nhanvien','thongtinxe'));
+        $khos = kho::all();
+        $nhanviens=nhanvien::all();
+        $thongtinxes=thongtinxe::all();
+        return view('nhapxe.create',compact('khos','nhanviens','thongtinxes'));
     }
     public function store(Request $request)
     {
@@ -37,7 +37,6 @@ class nhapxecontroller extends Controller
             'mahd' => 'required',
             'ngayhd' => 'required',
             'maID' => 'required',
-            'ngaysinh' => 'required',
             'gianhap' => 'required',
             'kho_id' => 'required',
             'nhanvien_id' => 'required',
@@ -48,14 +47,14 @@ class nhapxecontroller extends Controller
     }
     public function show(nhapxe $nhapxe)
     {
-        return view('nhapxe.show',compact('nhapxe'));
+        return view('nhapxe.show',compact('nhapxe','khos','nhanviens','thongtinxes'));
     }
     public function edit(nhapxe $nhapxe)
     {
-        $kho = kho::all();
-        $nhanvien=nhanvien::all();
-        $thongtinxe=thongtinxe::all();
-        return view('nhapxe.edit',compact('nhanpxe','kho','nhanvien','thongtinxe'));
+        $khos = kho::all();
+        $nhanviens=nhanvien::all();
+        $thongtinxes=thongtinxe::all();
+        return view('nhapxe.edit',compact('nhapxe','khos','nhanviens','thongtinxes'));
     }
     public function update(Request $request, nhapxe $nhapxe)
     {
@@ -65,7 +64,6 @@ class nhapxecontroller extends Controller
             'mahd' => 'required',
             'ngayhd' => 'required',
             'maID' => 'required',
-            'ngaysinh' => 'required',
             'gianhap' => 'required',
             'kho_id' => 'required',
             'nhanvien_id' => 'required',

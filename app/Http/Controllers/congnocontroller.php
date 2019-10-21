@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\kho;
-use App\nhanvien;
-use App\nhapxe;
+
+use  App\khachhang;
+use App\congno;
 use App\thongtinxe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,9 +13,9 @@ class congnocontroller extends Controller
 {
     public function index()
     {
-        $nhapxes = nhapxe::latest()->paginate(10);
+        $congnos = nhapxe::latest()->paginate(10);
 
-        return view('nhapxe.index',compact('nhapxes'))->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('congno.index',compact('congnos'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
     public function search (Request $request){
         $search =$request->get('search');
@@ -25,59 +25,55 @@ class congnocontroller extends Controller
     }
     public function create()
     {
-        $kho = kho::all();
-        $nhanvien=nhanvien::all();
-        $thongtinxe=thongtinxe::all();
-        return view('nhapxe.create',compact('nhanpxe','kho','nhanvien','thongtinxe'));
+       $khachhangs=khachhang::all();
+        $thongtinxes=thongtinxe::all();
+        return view('congno.create',compact('khachhangs','thongtinxes'));
     }
     public function store(Request $request)
     {
         $request->validate([
-            'nhacc' => 'required',
-            'ngaynhan' => 'required',
-            'mahd' => 'required',
-            'ngayhd' => 'required',
-            'maID' => 'required',
-            'ngaysinh' => 'required',
-            'gianhap' => 'required',
-            'kho_id' => 'required',
-            'nhanvien_id' => 'required',
+            'ngaymua' => 'required',
+            'giaban' => 'required',
+            'tratruoc' => 'required',
+            'tralan1' => 'required',
+            'conlai' => 'required',
+            'tientra' => 'required',
+            'ngaytra' => 'required',
             'thongtinxe_id' => 'required',
+            'khachhang_id' => 'required',
         ]);
-        nhapxe::create($request->all());
-        return redirect()->route('nhapxe.index')->with('success','thêm thành công .');
+        congno::create($request->all());
+        return redirect()->route('congno.index')->with('success','thêm thành công .');
     }
-    public function show(nhapxe $nhapxe)
+    public function show(congno $congno)
     {
-        return view('nhapxe.show',compact('nhapxe'));
+        return view('congno.show',compact('congno'));
     }
-    public function edit(nhapxe $nhapxe)
+    public function edit(congno $congno)
     {
-        $kho = kho::all();
-        $nhanvien=nhanvien::all();
-        $thongtinxe=thongtinxe::all();
-        return view('nhapxe.edit',compact('nhanpxe','kho','nhanvien','thongtinxe'));
+        $khachhangs=khachhang::all();
+        $thongtinxes=thongtinxe::all();
+        return view('nhapxe.edit',compact('khachhangs','thongtinxes'));
     }
-    public function update(Request $request, nhapxe $nhapxe)
+    public function update(Request $request, congno $congno)
     {
         $request->validate([
-            'nhacc' => 'required',
-            'ngaynhan' => 'required',
-            'mahd' => 'required',
-            'ngayhd' => 'required',
-            'maID' => 'required',
-            'ngaysinh' => 'required',
-            'gianhap' => 'required',
-            'kho_id' => 'required',
-            'nhanvien_id' => 'required',
+            'ngaymua' => 'required',
+            'giaban' => 'required',
+            'tratruoc' => 'required',
+            'tralan1' => 'required',
+            'conlai' => 'required',
+            'tientra' => 'required',
+            'ngaytra' => 'required',
             'thongtinxe_id' => 'required',
+            'khachhang_id' => 'required',
         ]);
-        $nhapxe->update($request->all());
-        return redirect()->route('nhapxe.index')->with('success','sửa thành công.');
+        $congno->update($request->all());
+        return redirect()->route('congno.index')->with('success','sửa thành công.');
     }
-    public function destroy(nhapxe $nhapxe)
+    public function destroy(congno $congno)
     {
-        $nhapxe->delete();
-        return redirect()->route('nhapxe.index')->with('success','xóa thành công.');
+        $congno->delete();
+        return redirect()->route('congno.index')->with('success','xóa thành công.');
     }
 }

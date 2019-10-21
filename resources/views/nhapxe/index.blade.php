@@ -4,7 +4,7 @@
     <a href="{{ url('/home') }}">trang chủ</a>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center">thông tin khách hàng </h2>
+            <h2 class="text-center">thông tin xe nhập </h2>
         </div>
         <div class="col-md-4" >
             <form action="/search" method="get" role="search">
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
-            <a class="btn btn-success " href="{{ route('nhapxe.create') }}"> thêm khách hàng</a>
+            <a class="btn btn-success " href="{{ route('nhapxe.create') }}"> nhập xe</a>
         </div>
     </div>
 
@@ -45,6 +45,7 @@
                 <th>nhà cung cấp</th>
                 <th>ngày nhận</th>
                 <th>người nhận</th>
+                <th>người kiểm tra</th>
                 <th>kho nhận</th>
                 <th>Mã HD</th>
                 <th>ngày HD</th>
@@ -63,15 +64,15 @@
                     <td>{{ $nhapxe->thongtinxe->somay}}</td>
                     <td>{{ $nhapxe->nhacc}}</td>
                     <td>{{ $nhapxe->ngaynhan}}</td>
-                    <td>{{ $nhapxe->nhanvien->nguoinhan }}</td>
+                    <td>{{ $nhapxe->nhanvien->name }}</td>
+                    <td>{{ $nhapxe->nhanvien->name }}</td>
                     <td>{{ $nhapxe->kho->dia_diem}}</td>
                     <td>{{ $nhapxe->mahd}}</td>
                     <td>{{ $nhapxe->ngayhd}}</td>
                     <td>{{ $nhapxe->maID}}</td>
                     <td>{{ $nhapxe->gianhap}}</td>
-
-
-                        <form action="{{ route('$nhapxe.destroy',$nhapxe->id) }}" method="POST">
+                    <td>
+                        <form action="{{ route('nhapxe.destroy',$nhapxe->id) }}" method="POST">
 
                             <a class="btn btn-info" href="{{ route('nhapxe.show',$nhapxe->id) }}">xem</a>
                             <a class="btn btn-primary" href="{{ route('nhapxe.edit',$nhapxe->id) }}">sửa</a>

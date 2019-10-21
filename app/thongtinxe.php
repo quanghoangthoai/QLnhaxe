@@ -11,18 +11,22 @@ class thongtinxe extends Model
         'loaixe', 'tenxe','doixe','mauxe','sokhung','somay'
     ];
     public function nhapxe(){
-        return $this->belongsTo('App\nhapxe', 'thongtinxe_id','id');
+        return $this->hasMany('App\nhapxe', 'thongtinxe_id','id');
 
     }
     public function banxe(){
-        return $this->belongsTo('App\banxe', 'thongtinxe_id','id');
+        return $this->hasMany('App\banxe', 'thongtinxe_id','id');
     }
     public function congno(){
-        return $this->belongsTo('App\congno', 'thongtinxe_id','id');
+        return $this->hasMany('App\congno', 'thongtinxe_id','id');
     }
     public function ktquatang(){
-        return $this->belongsTo('App\ktquatang', 'thongtinxe_id','id');
+        return $this->hasMany('App\ktquatang', 'thongtinxe_id','id');
     }
+    public function xuatnoibo(){
+        return $this->hasMany('App\xuatnoibo', 'thongtinxe_id','id');
+    }
+
 
 
 }

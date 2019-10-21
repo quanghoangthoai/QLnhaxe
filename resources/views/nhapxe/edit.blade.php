@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center">sửa thông tin nhập xe</h2>
+            <h2 class="text-center">sửa thông tin công nợ</h2>
         </div>
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
             <a class="btn btn-primary" href="{{ route('nhapxe.index') }}"> Back</a>
@@ -28,41 +28,67 @@
 
         <div class="row">
             <!-- div nhapxe-->
-            <div class="row tab-wrapper" id="tab-nhapxe">
+
                 <div class="col-6 col-sm-6">
                     <div class="form-group">
                         <label for="loaixe">Loại xe</label>
-                        <select class="form-control" id="loaixe" name="thongtinxe_id">
-                            @foreach($thongtinxe as $thongtinxe)
-                                <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->loaixe }}</option>
+                        <select class="form-control"  name="thongtinxe_id">
+                            @foreach($thongtinxes as $thongtinxe)
+                                <option
+                                    @if($nhapxe->thongtinxe->id == $thongtinxe->id)
+                                    {{ 'selected' }}
+                                    @endif
+                                    value="{{ $thongtinxe->id }}">{{ $thongtinxe->loaixe }}</option>
                             @endforeach
                         </select>
                         <label for="tenxe">Tên xe</label>
-                        <select class="form-control" id="tenxe" name="thongtinxe_id">
-                            @foreach($thongtinxe as $thongtinxe)
-                                <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->tenxe }}</option>
+                        <select class="form-control"  name="thongtinxe_id">
+                            @foreach($thongtinxes as $thongtinxe)
+                                <option
+                                    @if($nhapxe->thongtinxe->id == $thongtinxe->id)
+                                    {{ 'selected' }}
+                                    @endif
+                                    value="{{ $thongtinxe->id }}">{{ $thongtinxe->tenxe }}</option>
                             @endforeach
                         </select>
                         <label for="doixe">Đời xe</label>
-                        @foreach($thongtinxe as $thongtinxe)
-                            <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->doixe }}</option>
+                        <select class="form-control"  name="thongtinxe_id">
+                        @foreach($thongtinxes as $thongtinxe)
+                            <option
+                                @if($nhapxe->thongtinxe->id == $thongtinxe->id)
+                                {{ 'selected' }}
+                                @endif
+                                value="{{ $thongtinxe->id }}">{{ $thongtinxe->doixe }}</option>
                         @endforeach
+                            </select>
                         <label for="mauxe">Mẫu xe</label>
-                        <select class="form-control" id="mauxe" name="thongtinxe_id">
-                            @foreach($thongtinxe as $thongtinxe)
-                                <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->mauxe }}</option>
+                        <select class="form-control"  name="thongtinxe_id">
+                            @foreach($thongtinxes as $thongtinxe)
+                                <option
+                                    @if($nhapxe->thongtinxe->id == $thongtinxe->id)
+                                    {{ 'selected' }}
+                                    @endif
+                                    value="{{ $thongtinxe->id }}">{{ $thongtinxe->mauxe }}</option>
                             @endforeach
                         </select>
                         <label for="mauxe">số khung</label>
-                        <select class="form-control" id="mauxe"name="thongtinxe_id">
-                            @foreach($thongtinxe as $thongtinxe)
-                                <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->sokhung }}</option>
+                        <select class="form-control" name="thongtinxe_id">
+                            @foreach($thongtinxes as $thongtinxe)
+                                <option
+                                    @if($nhapxe->thongtinxe->id == $thongtinxe->id)
+                                    {{ 'selected' }}
+                                    @endif
+                                    value="{{ $thongtinxe->id }}">{{ $thongtinxe->sokhung }}</option>
                             @endforeach
                         </select>
                         <label for="mauxe">số máy</label>
-                        <select class="form-control" id="mauxe"name="thongtinxe_id">
-                            @foreach($thongtinxe as $thongtinxe)
-                                <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->somay }}</option>
+                        <select class="form-control" name="thongtinxe_id">
+                            @foreach($thongtinxes as $thongtinxe)
+                                <option
+                                    @if($nhapxe->thongtinxe->id == $thongtinxe->id)
+                                    {{ 'selected' }}
+                                    @endif
+                                    value="{{ $thongtinxe->id }}">{{ $thongtinxe->somay }}</option>
                             @endforeach
                         </select>
                         <label for="nhacungcap">Nhà cung cấp</label>
@@ -72,23 +98,36 @@
                 <div class="col-6 col-sm-6">
                     <div class="form-group" >
                         <label for="nhacungcap">Ngày nhận</label>
-                        <input type="date" class="form-control" id="ngaynhan"name="ngaynhan"value="{{ $nhapxe->ngaynhan }}" >
+                        <input type="date" class="form-control" name="ngaynhan"value="{{ $nhapxe->ngaynhan }}" >
                         <label for="nguoinhan">Người nhận</label>
-                        <select class="form-control" id="nguoinhan"name="nhanvien_id">
-                            @foreach($nhanvien as $nhanvien)
-                                <option value="{{ $nhanvien->id }}">{{ $nhanvien->name }}</option>
+                        <select class="form-control" name="nhanvien_id">
+                            @foreach($nhanviens as $nhanvien)
+                                <option
+                                    @if($nhapxe->nhanvien->id == $nhanvien->id)
+                                    {{ 'selected' }}
+                                    @endif
+                                    value="{{ $nhanvien->id }}">{{ $nhanvien->name }}</option>
                             @endforeach
                         </select>
                         <label for="nguoi_tk">Người TK</label>
-                        <select class="form-control" id="nguoi_tk"name="nhanvien_id">
-                            @foreach($nhanvien as $nhanvien)
-                                <option value="{{ $nhanvien->id }}">{{ $nhanvien->name }}</option>
+                        <select class="form-control" name="nhanvien_id">
+                            @foreach($nhanviens as $nhanvien)
+                                <option
+                                    @if($nhapxe->nhanvien->id == $nhapxe->id)
+                                    {{ 'selected' }}
+                                    @endif
+                                    value="{{ $nhanvien->id }}">{{ $nhanvien->name }}</option>
                             @endforeach
                         </select>
                         <label for="khonhan">Kho nhận</label>
-                        <select class="form-control" id="khonhan"name="kho_id">
-                            @foreach($kho as $kho)
-                                <option value="{{ $kho->id }}">{{ $kho->dia_diem }}</option>
+                        <select class="form-control" name="kho_id">
+                            @foreach($khos as $kho)
+
+                                <option
+                                    @if($nhapxe->kho->id == $kho->id)
+                                    {{ 'selected' }}
+                                    @endif
+                                    value="{{ $kho->id }}">{{ $kho->dia_diem }}</option>
                             @endforeach
                         </select>
                         <label for="somay">Mã HD</label>
@@ -100,7 +139,7 @@
                         <label for="somay">Giá nhập</label>
                         <input type="text" class="form-control" id="gianhap"name="gianhap"placeholder="giá nhập" value="{{ $nhapxe->gianhap }}">
                     </div>
-                </div>
+
 
             </div>
             <!-- end nhapxe-->

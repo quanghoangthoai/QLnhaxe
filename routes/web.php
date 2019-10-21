@@ -40,3 +40,9 @@ Route::get('/search', 'tragopController@search');
 
 Route::resource('nhapxe','nhapxeController');
 Route::get('/search', 'nhapxeController@search');
+
+Route::resource('congno','congnoController');
+Route::get('/search', 'congnoController@search');
+
+Route::resource('ktquatang','ktquatangController');
+Route::get('/search', 'ktquatangController@search');

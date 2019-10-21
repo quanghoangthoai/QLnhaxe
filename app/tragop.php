@@ -11,6 +11,6 @@ class tragop extends Model
         'loaitragop'
     ];
     public function banxe(){
-        return $this->belongsTo('App\banxe', 'tragop_id','id');
+        return $this->hasMany('App\banxe', 'tragop_id','id');
     }
 }

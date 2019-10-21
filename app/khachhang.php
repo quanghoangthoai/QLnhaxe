@@ -12,9 +12,9 @@ class khachhang extends Model
         'hovaten', 'ngaysinh','sdt','diachi'
     ];
     public function congno(){
-        return $this->belongsTo('App\congno', 'khachhang_id','id');
+        return $this->hasMany('App\congno', 'khachhang_id','id');
     }
     public function ktquatang(){
-        return $this->belongsTo('App\ktquatang', 'khachhang_id','id');
+        return $this->hasMany('App\ktquatang', 'khachhang_id','id');
     }
 }

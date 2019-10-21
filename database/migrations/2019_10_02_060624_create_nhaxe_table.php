@@ -13,6 +13,8 @@ class CreateNhaxeTable extends Migration
      */
     public function up()
     {
+
+
         Schema::create('nhapxe', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('somay');

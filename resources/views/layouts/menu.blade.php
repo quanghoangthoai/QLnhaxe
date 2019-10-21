@@ -41,6 +41,16 @@
                         <i class="fa fa-flag"></i> <span>nhập xe </span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('congno.index') }} " class="nav-link">
+                        <i class="fa fa-flag"></i> <span>công nợ </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('ktquatang.index') }} " class="nav-link">
+                        <i class="fa fa-flag"></i> <span>kết quả quà tặng </span>
+                    </a>
+                </li>
 
 
             </div>

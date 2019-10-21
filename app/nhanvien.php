@@ -11,10 +11,10 @@ class nhanvien extends Model
         'name', 'sdt'
     ];
     public function nhapxe(){
-        return $this->belongsTo('App\nhapxe', 'nhanvien_id','id');
+        return $this->hasMany('App\nhapxe', 'nhanvien_id','id');
 
     }
     public function banxe(){
-        return $this->belongsTo('App\nhanvien', 'nhanvien_id','id');
+        return $this->hasMany('App\nhanvien', 'nhanvien_id','id');
     }
 }
