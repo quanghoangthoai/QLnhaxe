@@ -76,13 +76,13 @@
                         <label for="nguoinhan">Người nhận</label>
                         <select class="form-control" name="nhanvien_id">
                             @foreach($nhanviens as $nhanvien)
-                                <option value="{{ $nhanvien->id }}">{{ $nhanvien->name }}</option>
+                                <option value="{{ $nhanvien->id }}">{{ $nhanvien->nguoinhan }}</option>
                             @endforeach
                         </select>
                         <label for="nguoi_tk">Người TK</label>
                         <select class="form-control" name="nhanvien_id">
                             @foreach($nhanviens as $nhanvien)
-                                <option value="{{ $nhanvien->id }}">{{ $nhanvien->name }}</option>
+                                <option value="{{ $nhanvien->id }}">{{ $nhanvien->nguoikt }}</option>
                             @endforeach
                         </select>
                         <label for="khonhan">Kho nhận</label>

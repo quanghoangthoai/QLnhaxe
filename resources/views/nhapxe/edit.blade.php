@@ -106,7 +106,7 @@
                                     @if($nhapxe->nhanvien->id == $nhanvien->id)
                                     {{ 'selected' }}
                                     @endif
-                                    value="{{ $nhanvien->id }}">{{ $nhanvien->name }}</option>
+                                    value="{{ $nhanvien->id }}">{{ $nhanvien->nguoinhan }}</option>
                             @endforeach
                         </select>
                         <label for="nguoi_tk">Người TK</label>
@@ -116,7 +116,7 @@
                                     @if($nhapxe->nhanvien->id == $nhapxe->id)
                                     {{ 'selected' }}
                                     @endif
-                                    value="{{ $nhanvien->id }}">{{ $nhanvien->name }}</option>
+                                    value="{{ $nhanvien->id }}">{{ $nhanvien->nguoikt }}</option>
                             @endforeach
                         </select>
                         <label for="khonhan">Kho nhận</label>

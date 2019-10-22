@@ -36,17 +36,18 @@
         <table class="table table-bordered">
             <tr>
                 <th>stt</th>
-                <th>Họ và tên </th>
-                <th>số điện thoại</th>
+                <th>người nhận </th>
+                <th>người kiểm tra</th>
+                <th>nhân viên bảo hiển </th>
 
                 <th width="280px">More</th>
             </tr>
             @foreach ($nhanviens as $nhanvien)
                 <tr>
                     <td>{{ ++$i }}</td>
-                    <td>{{ $nhanvien->name }}</td>
-                    <td>{{ $nhanvien->sdt}}</td>
-
+                    <td>{{ $nhanvien->nguoinhan }}</td>
+                    <td>{{ $nhanvien->nguoikt }}</td>
+                    <td>{{ $nhanvien->nhanvienbh }}</td>
                     <td>
                         <form action="{{ route('nhanvien.destroy',$nhanvien->id) }}" method="POST">
 

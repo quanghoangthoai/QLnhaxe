@@ -56,11 +56,8 @@
                                 @endforeach
                             </select>
                             <label for="ngaysinh">Ngày sinh</label>
-                            <select class="form-control" id="ten_kh" name="khachhang_id">
-                                @foreach($khachhangs as $khachhang)
-                                    <option value="{{ $khachhang->id }}">{{ $khachhang->ngaysinh }}</option>
-                                @endforeach
-                            </select>
+                            <label for="ngaymua" class="ngaymua">Ngày nhận</label>
+                            <input type="date" class="form-control" id="ngaymua" name="ngaynhan" >
 
                         </div>
                     </div>

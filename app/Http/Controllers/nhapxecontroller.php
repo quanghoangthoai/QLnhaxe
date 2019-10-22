@@ -47,7 +47,7 @@ class nhapxecontroller extends Controller
     }
     public function show(nhapxe $nhapxe)
     {
-        return view('nhapxe.show',compact('nhapxe','khos','nhanviens','thongtinxes'));
+        return view('nhapxe.show',compact('nhapxe'));
     }
     public function edit(nhapxe $nhapxe)
     {

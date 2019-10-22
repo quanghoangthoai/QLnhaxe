@@ -15,7 +15,6 @@ class CreateBanxeTable extends Migration
     {
         Schema::create('banxe', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('soHD');
             $table->integer('giaban');
             $table->integer('duatruoc');
             $table->integer('conlai');

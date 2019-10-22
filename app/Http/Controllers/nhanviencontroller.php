@@ -16,7 +16,7 @@ class nhanviencontroller extends Controller
     }
     public function search (Request $request){
         $search =$request->get('search');
-        $nhanviens=DB::table('nhanvien')->where('name','like','%'.$search.'%')->paginate(5);
+        $nhanviens=DB::table('nhanvien')->where('nguoinhan','like','%'.$search.'%')->paginate(5);
         return view('nhanvien.index',compact('nhanviens'))->with('i', (request()->input('page', 1) - 1) * 5);
 
     }
@@ -27,8 +27,9 @@ class nhanviencontroller extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'sdt' => 'required'
+            'nguoinhan' => 'required',
+            'nguoikt' => 'required',
+            'nhanvienbh' => 'required',
 
         ]);
         nhanvien::create($request->all());
@@ -45,8 +46,10 @@ class nhanviencontroller extends Controller
     public function update(Request $request, nhanvien $nhanvien)
     {
         $request->validate([
-            'name' => 'required',
-            'sdt' => 'required',
+            'nguoinhan' => 'required',
+            'nguoikt' => 'required',
+            'nhanvienbh' => 'required',
+
         ]);
         $nhanvien->update($request->all());
         return redirect()->route('nhanvien.index')->with('success','sửa thành công.');

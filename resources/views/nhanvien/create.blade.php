@@ -27,18 +27,22 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>họ và tên:</strong>
-                    <input type="text" name="name" class="form-control" placeholder="họ và tên">
+                    <strong>người nhận:</strong>
+                    <input type="text" name="nguoinhan" class="form-control" placeholder="họ và tên">
                 </div>
             </div>
-
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>số điện thoại:</strong>
-                    <input type="text" name="sdt" class="form-control" placeholder="số điện thoại">
+                    <strong>người kiểm tra:</strong>
+                    <input type="text" name="nguoikt" class="form-control" placeholder="họ và tên">
                 </div>
             </div>
-
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>nhân viên bảo hiểm:</strong>
+                    <input type="text" name="nhanvienbh" class="form-control" placeholder="họ và tên">
+                </div>
+            </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">thêm</button>

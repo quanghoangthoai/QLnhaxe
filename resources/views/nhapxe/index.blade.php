@@ -42,14 +42,9 @@
                 <th>mẫu xe</th>
                 <th>số khung</th>
                 <th>số máy</th>
-                <th>nhà cung cấp</th>
                 <th>ngày nhận</th>
-                <th>người nhận</th>
                 <th>người kiểm tra</th>
                 <th>kho nhận</th>
-                <th>Mã HD</th>
-                <th>ngày HD</th>
-                <th>Mã ID</th>
                 <th>giá nhập</th>
                 <th width="280px">More</th>
             </tr>
@@ -62,14 +57,9 @@
                     <td>{{ $nhapxe->thongtinxe->mauxe}}</td>
                     <td>{{ $nhapxe->thongtinxe->sokhung }}</td>
                     <td>{{ $nhapxe->thongtinxe->somay}}</td>
-                    <td>{{ $nhapxe->nhacc}}</td>
                     <td>{{ $nhapxe->ngaynhan}}</td>
                     <td>{{ $nhapxe->nhanvien->name }}</td>
-                    <td>{{ $nhapxe->nhanvien->name }}</td>
                     <td>{{ $nhapxe->kho->dia_diem}}</td>
-                    <td>{{ $nhapxe->mahd}}</td>
-                    <td>{{ $nhapxe->ngayhd}}</td>
-                    <td>{{ $nhapxe->maID}}</td>
                     <td>{{ $nhapxe->gianhap}}</td>
                     <td>
                         <form action="{{ route('nhapxe.destroy',$nhapxe->id) }}" method="POST">

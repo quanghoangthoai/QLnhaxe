@@ -15,7 +15,9 @@ class CreateNhanvienTable extends Migration
     {
         Schema::create('nhanvien', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('nguoinhan');
+            $table->string('nguoikt');
+            $table->string('nhanvienbh');
             $table->integer('sdt');
             $table->timestamps();
         });

@@ -8,7 +8,7 @@ class nhanvien extends Model
 {
     protected $table = 'nhanvien';
     protected $fillable = [
-        'name', 'sdt'
+        'nguoinhan', 'nguoikt','nhanvienbh'
     ];
     public function nhapxe(){
         return $this->hasMany('App\nhapxe', 'nhanvien_id','id');
