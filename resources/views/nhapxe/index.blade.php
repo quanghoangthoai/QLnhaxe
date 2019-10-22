@@ -43,7 +43,6 @@
                 <th>số khung</th>
                 <th>số máy</th>
                 <th>ngày nhận</th>
-                <th>người kiểm tra</th>
                 <th>kho nhận</th>
                 <th>giá nhập</th>
                 <th width="280px">More</th>
@@ -58,7 +57,6 @@
                     <td>{{ $nhapxe->thongtinxe->sokhung }}</td>
                     <td>{{ $nhapxe->thongtinxe->somay}}</td>
                     <td>{{ $nhapxe->ngaynhan}}</td>
-                    <td>{{ $nhapxe->nhanvien->name }}</td>
                     <td>{{ $nhapxe->kho->dia_diem}}</td>
                     <td>{{ $nhapxe->gianhap}}</td>
                     <td>

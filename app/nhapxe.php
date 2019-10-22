@@ -8,7 +8,7 @@ class nhapxe extends Model
 {
     protected $table='nhapxe';
     protected $fillable = [
-        'somay', 'nhacc','ngaynhan','mahd','ngayhd','maID','gianhap','kho_id','nhanvien_id','thongtinxe_id'
+        'somay','sokhung' ,'nhacc','ngaynhan','mahd','ngayhd','maID','gianhap','kho_id','nhanvien_id','thongtinxe_id'
     ];
     public function kho(){
         return $this->belongsTo('App\kho', 'kho_id','id');

@@ -45,12 +45,6 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>mẫu xe:</strong>
-                    <input type="text" name="mauxe" value="{{ $thongtinxe->mauxe }}" class="form-control" placeholder="mẫu xe">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
                     <strong>số khung:</strong>
                     <input type="text" name="sokhung" value="{{ $thongtinxe->sokhung }}" class="form-control" placeholder="số khung">
                 </div>
@@ -61,6 +55,13 @@
                     <input type="text" name="somay" value="{{ $thongtinxe->somay }}" class="form-control" placeholder="số máy ">
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>mẫu xe:</strong>
+                    <input type="text" name="mauxe" value="{{ $thongtinxe->mauxe }}" class="form-control" placeholder="mẫu xe">
+                </div>
+            </div>
+
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">cập nhập</button>
             </div>

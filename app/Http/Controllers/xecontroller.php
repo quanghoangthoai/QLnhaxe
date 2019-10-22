@@ -33,6 +33,7 @@ class xecontroller extends Controller
             'mauxe' => 'required',
             'sokhung' => 'required',
             'somay' => 'required',
+
         ]);
         thongtinxe::create($request->all());
         return redirect()->route('thongtinxe.index')->with('success','thêm thành công .');

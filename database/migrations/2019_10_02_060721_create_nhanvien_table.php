@@ -18,7 +18,6 @@ class CreateNhanvienTable extends Migration
             $table->string('nguoinhan');
             $table->string('nguoikt');
             $table->string('nhanvienbh');
-            $table->integer('sdt');
             $table->timestamps();
         });
     }

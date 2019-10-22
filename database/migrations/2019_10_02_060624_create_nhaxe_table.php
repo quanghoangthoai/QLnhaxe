@@ -17,7 +17,6 @@ class CreateNhaxeTable extends Migration
 
         Schema::create('nhapxe', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('somay');
             $table->string('nhacc');
             $table->date('ngaynhan');
             $table->string('mahd');

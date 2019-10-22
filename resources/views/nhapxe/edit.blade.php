@@ -109,14 +109,14 @@
                                     value="{{ $nhanvien->id }}">{{ $nhanvien->nguoinhan }}</option>
                             @endforeach
                         </select>
-                        <label for="nguoi_tk">Người TK</label>
+                        <label for="nguoi_tk">Người kiểm tra</label>
                         <select class="form-control" name="nhanvien_id">
                             @foreach($nhanviens as $nhanvien)
                                 <option
                                     @if($nhapxe->nhanvien->id == $nhapxe->id)
                                     {{ 'selected' }}
                                     @endif
-                                    value="{{ $nhanvien->id }}">{{ $nhanvien->nguoikt }}</option>
+                                    value="{{ $nhanvien->id}}">{{ $nhanvien->nguoikt }}</option>
                             @endforeach
                         </select>
                         <label for="khonhan">Kho nhận</label>

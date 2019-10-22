@@ -54,15 +54,17 @@
                             @endforeach
                         </select>
                         <label for="mauxe">số khung</label>
-                        <select class="form-control" name="thongtinxe_id">
+                        <select class="form-control" name="thongtinxe_id" >
                             @foreach($thongtinxes as $thongtinxe)
-                                <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->sokhung }}</option>
+                                <option  value="{{ $thongtinxe->id }}">{{ $thongtinxe->sokhung }}
+                                </option>
                             @endforeach
                         </select>
                         <label for="mauxe">số máy</label>
-                        <select class="form-control" name="thongtinxe_id">
+                        <select class="form-control" name="thongtinxe_id" >
                             @foreach($thongtinxes as $thongtinxe)
-                                <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->somay }}</option>
+                                <option  value="{{ $thongtinxe->id }}">{{ $thongtinxe->somay }}
+                                </option>
                             @endforeach
                         </select>
                         <label for="nhacungcap">Nhà cung cấp</label>
