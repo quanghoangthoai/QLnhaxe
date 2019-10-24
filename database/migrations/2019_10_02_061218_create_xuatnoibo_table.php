@@ -18,7 +18,7 @@ class CreateXuatnoiboTable extends Migration
             $table->integer('soHD');
             $table->string('tinhtrang');
             $table->dateTime('ngayxuat');
-            $table->unsignedBigInteger('thongtinxe_id');
+            $table->BigInteger('thongtinxe_id')->unsigned();
             $table->unsignedBigInteger('kho_id');
             $table->timestamps();
         });

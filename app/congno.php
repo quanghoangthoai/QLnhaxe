@@ -9,7 +9,7 @@ class congno extends Model
 
     protected $table='congno';
     protected $fillable = [
-        'ngaymua', 'giaban','tratruoc','tralan1','conlai','tientra','ngaytra','thongtinxe_id','	khachhang_id'
+        'ngaymua', 'giaban','tratruoc','tralan1','conlai','tientra','ngaytra','thongtinxe_id','khachhang_id'
     ];
     public function thongtinxe(){
         return $this->belongsTo('App\thongtinxe', 'thongtinxe_id','id');

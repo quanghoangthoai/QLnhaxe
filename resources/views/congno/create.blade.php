@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center">nhập xe</h2>
+            <h2 class="text-center">nhập công nợ</h2>
         </div>
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
             <a class="btn btn-primary" href="{{ route('congno.index') }}"> Back</a>
@@ -30,40 +30,46 @@
 
                 <div class="col-sm-6">
                     <label for="ten_kh">Tên khách hàng</label>
-                    <select class="form-control" id="ten_kh" name="khachhang_id">
+                    <select class="form-control"  name="khachhang_id">
                         @foreach($khachhangs as $khachhang)
                             <option value="{{ $khachhang->id }}">{{ $khachhang->Hovaten }}</option>
                         @endforeach
                     </select>
                     <label for="ngaymua">Ngày mua</label>
-                    <input type="date" class="form-control" id="ngaymua" name="ngaymua" >
+                    <input type="date" class="form-control"  name="ngaymua" >
                     <label for="giaban">Giá bán</label>
-                    <input type="text" class="form-control" id="giaban" name="giaban" >
+                    <input type="text" class="form-control"  name="giaban" >
                     <label for="tratruoc">Trả trước</label>
-                    <input type="text" class="form-control" id="tratruoc" name="tratruoc" >
+                    <input type="text" class="form-control"  name="tratruoc" >
                     <label for="Tralan_1">Trả lần 1</label>
-                    <input type="text" class="form-control" id="Tralan_1" name="tralan1" >
+                    <input type="text" class="form-control"  name="tralan1" >
                 </div>
                 <div class=" col-sm-6">
                     <div class="form-group">
                         <label for="conlai">Còn lại</label>
-                        <input type="text" class="form-control" id="conlai" name="conlai" >
+                        <input type="text" class="form-control"  name="conlai" >
                         <label for="tenxe">Tên xe</label>
-                        <select class="form-control" id="ten_kh" name="thongtinxe_id">
+                        <select class="form-control"  name="thongtinxe_id">
                             @foreach($thongtinxes as $thongtinxe)
                                 <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->tenxe }}</option>
                             @endforeach
                         </select>
+                        <label for="somay">Số khung</label>
+                        <select class="form-control"  name="thongtinxe_id">
+                            @foreach($thongtinxes as $thongtinxe)
+                                <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->sokhung }}</option>
+                            @endforeach
+                        </select>
                         <label for="somay">Số máy</label>
-                        <select class="form-control" id="ten_kh" name="thongtinxe_id">
+                        <select class="form-control"  name="thongtinxe_id">
                             @foreach($thongtinxes as $thongtinxe)
                                 <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->somay }}</option>
                             @endforeach
                         </select>
                         <label for="tientra">Tiền trả</label>
-                        <input type="text" class="form-control" id="tientra" name="tientra" >
+                        <input type="text" class="form-control"  name="tientra" >
                         <label for="ngaytra">Ngày trả</label>
-                        <input type="date" class="form-control" id="ngaytra" name="ngaytra" >
+                        <input type="date" class="form-control"  name="ngaytra" >
                     </div>
                 </div>
 

@@ -1,12 +1,12 @@
-@extends('ktquatang.layout')
+@extends('xuatnoibo.layout')
 @section('content')
 
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center">kết quả quà tặng</h2>
+            <h2 class="text-center">xuất nội bộ</h2>
         </div>
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
-            <a class="btn btn-primary" href="{{ route('ktquatang.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('xuatnoibo.index') }}"> Back</a>
         </div>
     </div>
 
@@ -21,61 +21,74 @@
         </div>
     @endif
 
-    <form action="{{ route('ktquatang.store') }}" method="POST">
+    <form action="{{ route('xuatnoibo.store') }}" method="POST">
         @csrf
 
         <div class="row">
+            <!-- div xuat noi bo-->
 
-            <!-- div KT_quatang-->
-            <div class="row tab-wrapper" id="tab-tk_quatang">
-                <div class="col-sm-3"></div>
-                <div class=" col-sm-6">
-                    <div class="form-group">
-                        <label for="ten_kh">Tên khách hàng</label>
-                        <select class="form-control" id="ten_kh" name="khachhang_id">
-                            @foreach($khachhang as $khachhang)
-                                <option value="{{ $khachhang->id }}">{{ $khachhang->Hovaten }}</option>
-                            @endforeach
-                        </select>
-                        <div class="form_check">
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label" for="inlineCheckbox1">Quà tặng :</label>
-                                <select class="form-control" id="ten_kh" name="quatang_id">
-                                    @foreach($quatang as $quatang)
-                                        <option value="{{ $quatang->id }}">{{ $quatang->tenquatang }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
 
-                            <label for="ngaymua" class="ngaymua">Ngày nhận</label>
-                            <input type="date" class="form-control" id="ngaymua" name="ngaynhan" >
-                            <label for="somay">Số máy</label>
-                            <select class="form-control" id="ten_kh" name="thongtinxe_id">
-                                @foreach($thongtinxe as $thongtinxe)
-                                    <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->somay }}</option>
-                                @endforeach
-                            </select>
-                            <label for="ngaysinh">Ngày sinh</label>
-                            <select class="form-control" id="ten_kh" name="khachhang_id">
-                                @foreach($khachhang as $khachhang)
-                                    <option value="{{ $khachhang->id }}">{{ $khachhang->ngaysinh }}</option>
-                                @endforeach
-                            </select>
+                <label for="somay">Số máy</label>
+                <select class="form-control" name="thongtinxe_id" >
+                    @foreach($thongtinxes as $thongtinxe)
+                        <option
 
-                        </div>
-                    </div>
-                    <div class="col-sm-3"></div>
-                </div>
+                            value="{{ $thongtinxe->id }}">{{ $thongtinxe->somay }}
+                        </option>
+                    @endforeach
+                </select>
+                <label for="sokhung">Số khung</label>
+                <select class="form-control" name="thongtinxe_id" >
+                    @foreach($thongtinxes as $thongtinxe)
+                        <option
+
+                            value="{{ $thongtinxe->id }}">{{ $thongtinxe->sokhung }}
+                        </option>
+                    @endforeach
+                </select>
+                <label for="loaixe">Loại xe</label>
+                <select class="form-control" name="thongtinxe_id" >
+                    @foreach($thongtinxes as $thongtinxe)
+                        <option
+
+                            value="{{ $thongtinxe->id }}">{{ $thongtinxe->loaixe }}
+                        </option>
+                    @endforeach
+                </select>
+                <label for="mauxe">Màu xe</label>
+                <select class="form-control" name="thongtinxe_id" >
+                    @foreach($thongtinxes as $thongtinxe)
+
+                        <option
+                            value="{{ $thongtinxe->id }}">{{ $thongtinxe->mauxe }}
+                        </option>
+                    @endforeach
+                </select>
+                <label for="tinhtrang">Tình trạng</label>
+                <input type="text" class="form-control" name="tinhtrang" >
+                <label for="khoxuat">Kho xuất</label>
+                <select class="form-control" name="kho_id" >
+                    @foreach($khos as $kho)
+                        <option  value="{{ $kho->id }}">{{ $kho->dia_diem }}
+                        </option>
+                    @endforeach
+                </select>
+                <label for="khonhap">Kho Nhập</label>
+                <select class="form-control" name="kho_id" >
+                    @foreach($khos as $kho)
+                        <option  value="{{ $kho->id }}">{{ $kho->dia_diem }}
+                        </option>
+                    @endforeach
+                </select>
+                <label for="ngayxuat">Ngày xuất</label>
+                <input type="date" class="form-control" name="ngayxuat" >
             </div>
-            <!-- end  KT_quatang-->
 
-
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">thêm</button>
-                <button type="file" class="btn btn-primary btn-sm " >NHẬP TỪ FILE</button>
-
             </div>
-        </div>
+
 
     </form>
 @endsection

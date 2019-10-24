@@ -51,6 +51,11 @@
                         <i class="fa fa-flag"></i> <span>kết quả quà tặng </span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('xuatnoibo.index') }} " class="nav-link">
+                        <i class="fa fa-flag"></i> <span>xuất nội bộ </span>
+                    </a>
+                </li>
 
 
             </div>

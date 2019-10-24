@@ -49,7 +49,7 @@ class ktquatangcontroller extends Controller
         $thongtinxes=thongtinxe::all();
         $khachhangs=khachhang::all();
         $quatangs=quatang::all();
-        return view('nhapxe.edit',compact('ktquatang','khachhangs','thongtinxes','quatangs'));
+        return view('ktquatang.edit',compact('ktquatang','khachhangs','thongtinxes','quatangs'));
     }
     public function update(Request $request, ktquatang $ktquatang)
     {

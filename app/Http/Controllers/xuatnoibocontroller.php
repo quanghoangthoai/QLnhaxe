@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\xuatnoiboExport;
+
 
 use App\kho;
 use App\xuatnoibo;
@@ -12,15 +15,19 @@ class xuatnoibocontroller extends Controller
 {
     public function index()
     {
-        $xuatnoibos = ktquatang::latest()->paginate(10);
+        $xuatnoibos = xuatnoibo::latest()->paginate(10);
 
         return view('xuatnoibo.index',compact('xuatnoibos'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
     public function search (Request $request){
         $search =$request->get('search');
-        $nhapxes=DB::table('nhapxe')->where('thongtinxe_id','like','%'.$search.'%')->paginate(5);
-        return view('nhapxe.index',compact('nhapxes'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $xuatnoibos=DB::table('xuatnoibo')->where('id','like','%'.$search.'%')->paginate(5);
+        return view('xuatnoibo.index',compact('xuatnoibos'))->with('i', (request()->input('page', 1) - 1) * 5);
 
+    }
+    public function export()
+    {
+        return Excel::download(new xuatnoiboExport(), 'xuatnoibos.xlsx');
     }
     public function create()
     {
@@ -32,7 +39,6 @@ class xuatnoibocontroller extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'soHD' => 'required',
             'tinhtrang' => 'required',
             'ngayxuat' => 'required',
             'thongtinxe_id' => 'required',
@@ -49,12 +55,11 @@ class xuatnoibocontroller extends Controller
     {
         $thongtinxes=thongtinxe::all();
         $khos = kho::all();
-        return view('xuatnoibo.edit',compact('khos','thongtinxes'));
+        return view('xuatnoibo.edit',compact('xuatnoibo','khos','thongtinxes'));
     }
     public function update(Request $request, xuatnoibo $xuatnoibo)
     {
         $request->validate([
-            'soHD' => 'required',
             'tinhtrang' => 'required',
             'ngayxuat' => 'required',
             'thongtinxe_id' => 'required',

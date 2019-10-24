@@ -27,43 +27,42 @@
         <div class="row">
 
             <!-- div KT_quatang-->
-
                 <div class="col-sm-3"></div>
                 <div class=" col-sm-6">
                     <div class="form-group">
                         <label for="ten_kh">Tên khách hàng</label>
-                        <select class="form-control" id="ten_kh" name="khachhang_id">
+                        <select class="form-control"  name="khachhang_id">
                             @foreach($khachhangs as $khachhang)
                                 <option value="{{ $khachhang->id }}">{{ $khachhang->Hovaten }}</option>
                             @endforeach
                         </select>
-                        <div class="form_check">
-                            <div class="form-check form-check-inline">
+
                                 <label class="form-check-label" for="inlineCheckbox1">Quà tặng :</label>
-                                <select class="form-control" id="ten_kh" name="quatang_id">
+                                <select class="form-control"  name="quatang_id">
                                     @foreach($quatangs as $quatang)
                                         <option value="{{ $quatang->id }}">{{ $quatang->tenquatang }}</option>
                                     @endforeach
                                 </select>
-                            </div>
 
                             <label for="ngaymua" class="ngaymua">Ngày nhận</label>
-                            <input type="date" class="form-control" id="ngaymua" name="ngaynhan" >
+                            <input type="date" class="form-control"  name="ngaynhan" >
                             <label for="somay">Số máy</label>
-                            <select class="form-control" id="ten_kh" name="thongtinxe_id">
+                            <select class="form-control"  name="thongtinxe_id">
                                 @foreach($thongtinxes as $thongtinxe)
                                     <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->somay }}</option>
                                 @endforeach
                             </select>
+
                             <label for="ngaysinh">Ngày sinh</label>
-                            <label for="ngaymua" class="ngaymua">Ngày nhận</label>
-                            <input type="date" class="form-control" id="ngaymua" name="ngaynhan" >
+                            <select class="form-control"  name="thongtinxe_id">
+                                @foreach($khachhangs as $khachhang)
+                                    <option value="{{ $khachhang->id }}">{{ $khachhang->ngaysinh }}</option>
+                                @endforeach
+                            </select>
 
                         </div>
                     </div>
-                    <div class="col-sm-3"></div>
 
-            </div>
             <!-- end  KT_quatang-->
 
 

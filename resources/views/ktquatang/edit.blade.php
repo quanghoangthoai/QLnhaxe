@@ -28,30 +28,31 @@
 
         <div class="row">
             <!-- div ktquatang-->
-            <div class="row tab-wrapper" id="tab-tk_quatang">
+
                 <div class="col-sm-3"></div>
                 <div class=" col-sm-6">
                     <div class="form-group">
                         <label for="ten_kh">Tên khách hàng</label>
                         <select class="form-control" id="ten_kh" name="khachhang_id">
-                            @foreach($khachhang as $khachhang)
+                            @foreach($khachhangs as $khachhang)
 
-                                <option value="{{ $khachhang->id }}">{{ $khachhang->Hovaten }}
-                                    @if($ktquatang->khachhang->id == $khachhang->id)
-                                        {{ 'selected' }}
-                                    @endif
+                                <option  @if($ktquatang->khachhang->id == $khachhang->id)
+                                               {{ 'selected' }}
+                                               @endif
+                                    value="{{ $khachhang->id }}">{{ $khachhang->Hovaten }}
+
                                 </option>
                             @endforeach
                         </select>
-                        <div class="form_check">
-                            <div class="form-check form-check-inline">
+
                                 <label class="form-check-label" for="inlineCheckbox1">Quà tặng :</label>
                                 <select class="form-control" id="ten_kh" name="quatang_id">
-                                    @foreach($quatang as $quatang)
-                                        <option value="{{ $quatang->id }}">{{ $quatang->tenquatang }}
-                                            @if($ktquatang->quatang->id ==$quatang->id)
-                                                {{ 'selected' }}
-                                            @endif
+                                    @foreach($quatangs as $quatang)
+                                        <option  @if($ktquatang->quatang->id ==$quatang->id)
+                                                 {{ 'selected' }}
+                                                 @endif
+                                            value="{{ $quatang->id }}">{{ $quatang->tenquatang }}
+
                                         </option>
                                     @endforeach
                                 </select>
@@ -61,21 +62,22 @@
                             <input type="date" class="form-control" id="ngaymua" name="ngaynhan" value="{{$ktquatang->ngaynhan}}" >
                             <label for="somay">Số máy</label>
                             <select class="form-control" id="ten_kh" name="thongtinxe_id">
-                                @foreach($thongtinxe as $thongtinxe)
-                                    <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->somay }}
-                                        @if($ktquatang->thongtinxe->id == $thongtinxe->id)
-                                            {{ 'selected' }}
-                                        @endif
+                                @foreach($thongtinxes as $thongtinxe)
+                                    <option  @if($ktquatang->thongtinxe->id == $thongtinxe->id)
+                                             {{ 'selected' }}
+                                             @endif
+                                        value="{{ $thongtinxe->id }}">{{ $thongtinxe->somay }}
+
                                     </option>
                                 @endforeach
                             </select>
                             <label for="ngaysinh">Ngày sinh</label>
                             <select class="form-control" id="ten_kh" name="khachhang_id">
-                                @foreach($khachhang as $khachhang)
-                                    <option value="{{ $khachhang->id }}">{{ $khachhang->ngaysinh }}
-                                        @if($ktquatang->khachhang->id == $khachhang->id)
-                                            {{ 'selected' }}
-                                        @endif
+                                @foreach($khachhangs as $khachhang)
+                                    <option  @if($ktquatang->khachhang->id == $khachhang->id)
+                                             {{ 'selected' }}
+                                             @endif
+                                        value="{{ $khachhang->id }}">{{ $khachhang->ngaysinh }}
                                     </option>
                                 @endforeach
                             </select>

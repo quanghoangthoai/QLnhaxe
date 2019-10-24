@@ -47,16 +47,16 @@
             @foreach ($ktquatangs as $ktquatang)
                 <tr>
                     <td>{{ ++$i }}</td>
-                    <td>{{ $ktquatang->khachang->Hovaten }}</td>
+                    <td>{{ $ktquatang->khachhang->Hovaten }}</td>
                     <td>{{ $ktquatang->quatang->tenquatang}}</td>
                     <td>{{ $ktquatang->ngaynhan}}</td>
                     <td>{{ $ktquatang->thongtinxe->somay}}</td>
-                    <td>{{ $ktquatang->khachang->ngaysinh }}</td>
+                    <td>{{ $ktquatang->khachhang->ngaysinh }}</td>
+                    <td>
+                        <form action="{{ route('ktquatang.destroy',$ktquatang->id) }}" method="POST">
 
-                        <form action="{{ route('ktquatang.destroy',$nhapxe->id) }}" method="POST">
-
-                            <a class="btn btn-info" href="{{ route('ktquatang.show',$nhapxe->id) }}">xem</a>
-                            <a class="btn btn-primary" href="{{ route('ktquatang.edit',$nhapxe->id) }}">sửa</a>
+                            <a class="btn btn-info" href="{{ route('ktquatang.show',$ktquatang->id) }}">xem</a>
+                            <a class="btn btn-primary" href="{{ route('ktquatang.edit',$ktquatang->id) }}">sửa</a>
 
                             @csrf
                             @method('DELETE')

@@ -13,7 +13,7 @@ class congnocontroller extends Controller
 {
     public function index()
     {
-        $congnos = nhapxe::latest()->paginate(10);
+        $congnos = congno::latest()->paginate(10);
 
         return view('congno.index',compact('congnos'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
@@ -53,7 +53,7 @@ class congnocontroller extends Controller
     {
         $khachhangs=khachhang::all();
         $thongtinxes=thongtinxe::all();
-        return view('nhapxe.edit',compact('khachhangs','thongtinxes'));
+        return view('congno.edit',compact('congno','khachhangs','thongtinxes'));
     }
     public function update(Request $request, congno $congno)
     {

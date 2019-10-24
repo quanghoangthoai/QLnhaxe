@@ -1,10 +1,9 @@
 @extends('congno.layout')
-
 @section('content')
     <a href="{{ url('/home') }}">trang chủ</a>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center">thông tin khách hàng </h2>
+            <h2 class="text-center">thông tin công nợ </h2>
         </div>
         <div class="col-md-4" >
             <form action="/search" method="get" role="search">
@@ -22,7 +21,7 @@
             </div>
         </div>
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
-            <a class="btn btn-success " href="{{ route('conngno.create') }}"> thêm khách hàng</a>
+            <a class="btn btn-success " href="{{ route('congno.create') }}"> thêm công nợ</a>
         </div>
     </div>
 
@@ -32,7 +31,7 @@
         </div>
     @endif
 
-    @if(sizeof($nhapxes) > 0)
+    @if(sizeof($congnos) > 0)
         <table class="table table-bordered">
             <tr>
                 <th>stt</th>
@@ -53,9 +52,9 @@
             @foreach ($congnos as $congno)
                 <tr>
                     <td>{{ ++$i }}</td>
-                    td>{{ $congno->khachhang->Hovaten}}</td>
+                    <td>{{ $congno->khachhang->Hovaten}}</td>
                     <td>{{ $congno->ngaymua}}</td>
-                    td>{{ $congno->giaban}}</td>
+                    <td>{{ $congno->giaban}}</td>
                     <td>{{ $congno->tratruoc}}</td>
                     <td>{{ $congno->tralan1}}</td>
                     <td>{{ $congno->conlai}}</td>
@@ -64,8 +63,8 @@
                     <td>{{ $congno->thongtinxe->sokhung}}</td>
                     <td>{{ $congno->thongtinxe->somay}}</td>
                     <td>{{ $congno->ngaytra}}</td>
-                        <form action="{{ route('$congno.destroy',$congno->id) }}" method="POST">
-
+                    <td>
+                        <form action="{{ route('congno.destroy',$congno->id) }}" method="POST">
                             <a class="btn btn-info" href="{{ route('congno.show',$congno->id) }}">xem</a>
                             <a class="btn btn-primary" href="{{ route('congno.edit',$congno->id) }}">sửa</a>
 

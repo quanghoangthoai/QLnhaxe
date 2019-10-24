@@ -8,7 +8,7 @@ class xuatnoibo extends Model
 {
     protected $table='xuatnoibo';
     protected $fillable = [
-        'soHD', 'tinhtrang','ngayxuat','thongtinxe_id','kho_id'
+         'tinhtrang','ngayxuat','thongtinxe_id','kho_id'
     ];
     public function thongtinxe()
     {

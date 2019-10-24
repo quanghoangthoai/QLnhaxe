@@ -46,3 +46,7 @@ Route::get('/search', 'congnoController@search');
 
 Route::resource('ktquatang','ktquatangController');
 Route::get('/search', 'ktquatangController@search');
+
+Route::resource('xuatnoibo','xuatnoiboController');
+Route::get('/search', 'xuatnoiboController@search');
+Route::get('export', 'xuatnoiboController@export')->name('export');
