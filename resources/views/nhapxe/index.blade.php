@@ -23,7 +23,9 @@
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
             <a class="btn btn-success " href="{{ route('nhapxe.create') }}"> nhập xe</a>
         </div>
-        <a href="{{action('nhapxeController@export')}}">Export</a>
+        <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
+            <a class="btn btn-success " href="{{action('nhapxeController@export')}}">Export</a>
+        </div>
     </div>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
