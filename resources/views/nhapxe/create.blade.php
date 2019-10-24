@@ -100,7 +100,7 @@
             <!-- end nhapxe-->
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">thêm</button>
-                <button type="file" name="file" class="btn btn-primary btn-sm " >NHẬP TỪ FILE</button>
+               
             </div>
         </div>
 
