@@ -1,6 +1,5 @@
 @extends('congno.layout')
 @section('content')
-
     <div class="row">
         <div class="col-lg-12">
             <h2 class="text-center">nhập xe</h2>
@@ -9,7 +8,6 @@
             <a class="btn btn-primary" href="{{ route('congno.index') }}"> Back</a>
         </div>
     </div>
-
     @if ($errors->any())
         <div class="alert alert-danger">
             <strong>Oops!</strong> There were some problems with your input.<br><br>
@@ -20,14 +18,10 @@
             </ul>
         </div>
     @endif
-
     <form action="{{ route('congno.store') }}" method="POST">
         @csrf
-
         <div class="row">
-
             <!-- div congno-->
-
                 <div class="col-sm-6">
                     <label for="ten_kh">Tên khách hàng</label>
                     <select class="form-control" id="ten_kh" name="khachhang_id">
@@ -66,17 +60,11 @@
                         <input type="date" class="form-control" id="ngaytra" name="ngaytra" >
                     </div>
                 </div>
-
-
             <!-- end congno-->
-
-
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">thêm</button>
                 <button type="file" class="btn btn-primary btn-sm " >NHẬP TỪ FILE</button>
-
             </div>
         </div>
-
     </form>
 @endsection

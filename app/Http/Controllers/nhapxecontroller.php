@@ -1,26 +1,23 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\kho;
 use App\thongtinxe;
 use App\nhanvien;
 use App\nhapxe;
+use App\Exports\nhapxeExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class nhapxecontroller extends Controller
 {
     public function index()
     {
         $nhapxes = nhapxe::latest()->paginate(10);
-
         return view('nhapxe.index',compact('nhapxes'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
     public function search (Request $request){
         $search =$request->get('search');
         $nhapxes=DB::table('nhapxe')->where('thongtinxe_id','like','%'.$search.'%')->paginate(5);
-        return view('nhapxe.index',compact('nhapxes'))->with('i', (request()->input('page', 1) - 1) * 5);
-
+        return view('nhapxe.index',compact('nhapxes'))->with('i', (request()->input('page', 1) - 1) * 5); 
     }
     public function create( )
     {
@@ -77,4 +74,8 @@ class nhapxecontroller extends Controller
         $nhapxe->delete();
         return redirect()->route('nhapxe.index')->with('success','xóa thành công.');
     }
+    public function export() 
+{
+        return Excel::download(new nhapxeExport, 'excel_nhap_xe.xlsx');
+}
 }

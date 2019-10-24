@@ -1,6 +1,5 @@
 @extends('ktquatang.layout')
 @section('content')
-
     <div class="row">
         <div class="col-lg-12">
             <h2 class="text-center">kết quả quà tặng</h2>
@@ -9,7 +8,6 @@
             <a class="btn btn-primary" href="{{ route('ktquatang.index') }}"> Back</a>
         </div>
     </div>
-
     @if ($errors->any())
         <div class="alert alert-danger">
             <strong>Oops!</strong> There were some problems with your input.<br><br>
@@ -20,7 +18,6 @@
             </ul>
         </div>
     @endif
-
     <form action="{{ route('ktquatang.store') }}" method="POST">
         @csrf
 

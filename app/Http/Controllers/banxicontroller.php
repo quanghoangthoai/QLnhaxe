@@ -1,27 +1,21 @@
 <?php
-
 namespace App\Http\Controllers;
-
-
 use App\kho;
 use App\banxi;
 use App\thongtinxe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class banxicontroller extends Controller
 {
     public function index()
     {
         $banxis = banxi::latest()->paginate(10);
-
         return view('banxi.index',compact('banxis'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
     public function search (Request $request){
         $search =$request->get('search');
         $nhapxes=DB::table('nhapxe')->where('thongtinxe_id','like','%'.$search.'%')->paginate(5);
         return view('nhapxe.index',compact('nhapxes'))->with('i', (request()->input('page', 1) - 1) * 5);
-
     }
     public function create()
     {
@@ -40,8 +34,6 @@ class banxicontroller extends Controller
             'ngayxuat' => 'required',
             'kho_id' => 'required',
             'thongtinxe_id' => 'required',
-
-
         ]);
         ktquatang::create($request->all());
         return redirect()->route('banxi.index')->with('success','thêm thành công .');

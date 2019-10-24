@@ -6,7 +6,7 @@
             <h2 class="text-center">nhập xe</h2>
         </div>
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
-            <a class="btn btn-primary" href="{{ route('nhapxe.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('banxe.index') }}"> Back</a>
         </div>
     </div>
     @if ($errors->any())

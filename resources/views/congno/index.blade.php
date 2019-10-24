@@ -1,5 +1,4 @@
 @extends('congno.layout')
-
 @section('content')
     <a href="{{ url('/home') }}">trang chủ</a>
     <div class="row">
@@ -25,13 +24,11 @@
             <a class="btn btn-success " href="{{ route('conngno.create') }}"> thêm khách hàng</a>
         </div>
     </div>
-
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             {{ $message }}
         </div>
     @endif
-
     @if(sizeof($nhapxes) > 0)
         <table class="table table-bordered">
             <tr>
@@ -47,7 +44,6 @@
                 <th>số khung </th>
                 <th>số máy </th>
                 <th>ngày trả </th>
-
                 <th width="280px">More</th>
             </tr>
             @foreach ($congnos as $congno)
@@ -65,24 +61,17 @@
                     <td>{{ $congno->thongtinxe->somay}}</td>
                     <td>{{ $congno->ngaytra}}</td>
                         <form action="{{ route('$congno.destroy',$congno->id) }}" method="POST">
-
                             <a class="btn btn-info" href="{{ route('congno.show',$congno->id) }}">xem</a>
                             <a class="btn btn-primary" href="{{ route('congno.edit',$congno->id) }}">sửa</a>
-
                             @csrf
                             @method('DELETE')
-
                             <button type="submit" class="btn btn-danger">xóa</button>
                         </form>
                     </td>
                 </tr>
             @endforeach
         </table>
-
     @else
-
     @endif
-
-
     {!! $congnos->links() !!}
 @endsection

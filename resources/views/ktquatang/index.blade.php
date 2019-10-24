@@ -25,13 +25,11 @@
             <a class="btn btn-success " href="{{ route('ktquatang.create') }}"> thêm kết quả quà tặng</a>
         </div>
     </div>
-
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             {{ $message }}
         </div>
     @endif
-
     @if(sizeof($ktquatangs) > 0)
         <table class="table table-bordered">
             <tr>

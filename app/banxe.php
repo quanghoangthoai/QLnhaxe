@@ -1,17 +1,16 @@
 <?php
-
 namespace App;
-use App\nhapxe;
+use App\thongtinxe;
 use App\kho;
 use App\quatang;
 use App\tragop;
 use App\nhanvien;
+use App\banxe;
 use Illuminate\Database\Eloquent\Model;
-
 class banxe extends Model
 {
     protected $fillable = [
-        'soHD', 'giaban','duatruoc','conlai','tinhtrang','Hovaten','ngaysinh','SDT','ngaymua','diachi','phuong','thanhpho',
+        'id', 'giaban','duatruoc','conlai','tinhtrang','Hovaten','ngaysinh','SDT','ngaymua','diachi','phuong','thanhpho',
         'tinh','thongtinxe_id','kho_id','tragop_id','nhanvien_id','quatang_id'
     ];
     public function quatang(){
@@ -29,5 +28,4 @@ class banxe extends Model
     public function nhanvien(){
         return $this->belongsTo('App\nhanvien', 'nhanvien_id','id');
     }
-
 }

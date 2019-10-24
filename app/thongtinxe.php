@@ -1,9 +1,6 @@
 <?php
-
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
-
 class thongtinxe extends Model
 {
     protected $table = 'thongtinxe';
@@ -12,7 +9,6 @@ class thongtinxe extends Model
     ];
     public function nhapxe(){
         return $this->hasMany('App\nhapxe', 'thongtinxe_id','id');
-
     }
     public function banxe(){
         return $this->hasMany('App\banxe', 'thongtinxe_id','id');
@@ -26,7 +22,4 @@ class thongtinxe extends Model
     public function xuatnoibo(){
         return $this->hasMany('App\xuatnoibo', 'thongtinxe_id','id');
     }
-
-
-
 }

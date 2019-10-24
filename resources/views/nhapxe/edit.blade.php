@@ -1,7 +1,6 @@
 @extends('nhapxe.layout')
-
 @section('content')
-
+<a href="{{ url('/home') }}">trang chủ</a>
     <div class="row">
         <div class="col-lg-12">
             <h2 class="text-center">sửa thông tin công nợ</h2>
@@ -10,7 +9,6 @@
             <a class="btn btn-primary" href="{{ route('nhapxe.index') }}"> Back</a>
         </div>
     </div>
-
     @if ($errors->any())
         <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -21,14 +19,11 @@
             </ul>
         </div>
     @endif
-
     <form action="{{ route('nhapxe.update',$nhapxe->id) }}" method="POST">
         @csrf
         @method('PUT')
-
         <div class="row">
             <!-- div nhapxe-->
-
                 <div class="col-6 col-sm-6">
                     <div class="form-group">
                         <label for="loaixe">Loại xe</label>
@@ -139,15 +134,11 @@
                         <label for="somay">Giá nhập</label>
                         <input type="text" class="form-control" id="gianhap"name="gianhap"placeholder="giá nhập" value="{{ $nhapxe->gianhap }}">
                     </div>
-
-
             </div>
             <!-- end nhapxe-->
-
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">cập nhập</button>
             </div>
         </div>
-
     </form>
 @endsection

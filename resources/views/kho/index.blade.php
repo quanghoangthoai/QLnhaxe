@@ -24,20 +24,17 @@
             <a class="btn btn-success " href="{{ route('kho.create') }}"> thêm kho xe</a>
         </div>
     </div>
-
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             {{ $message }}
         </div>
     @endif
-
     @if(sizeof($khos) > 0)
         <table class="table table-bordered">
             <tr>
                 <th>stt</th>
                 <th>địa điểm </th>
                 <th>tên kho</th>
-
                 <th width="280px">More</th>
             </tr>
             @foreach ($khos as $kho)
@@ -45,7 +42,6 @@
                     <td>{{ ++$i }}</td>
                     <td>{{ $kho->dia_diem }}</td>
                     <td>{{ $kho->name}}</td>
-
                     <td>
                         <form action="{{ route('kho.destroy',$kho->id) }}" method="POST">
 
@@ -61,11 +57,7 @@
                 </tr>
             @endforeach
         </table>
-
     @else
-
     @endif
-
-
     {!! $khos->links() !!}
 @endsection

@@ -1,5 +1,4 @@
 @extends('khachhang.layout')
-
 @section('content')
     <a href="{{ url('/home') }}">trang chủ</a>
     <div class="row">

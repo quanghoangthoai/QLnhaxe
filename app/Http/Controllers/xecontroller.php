@@ -1,17 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\thongtinxe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class xecontroller extends Controller
 {
     public function index()
     {
         $thongtinxes = thongtinxe::latest()->paginate(10);
-
         return view('thongtinxe.index',compact('thongtinxes'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
     public function search (Request $request){
