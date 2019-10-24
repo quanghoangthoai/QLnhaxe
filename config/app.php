@@ -122,7 +122,7 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
-
+    `html2textHandler` => false,
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

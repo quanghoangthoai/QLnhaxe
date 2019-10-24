@@ -2,11 +2,14 @@
 
 namespace App\Exports;
 use Maatwebsite\Excel;
+use App\User;
 
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use App\xuatnoibo;
-use Maatwebsite\Excel\Concerns\FromCollection;
+
 
 class xuatnoiboExport implements FromView
 {
@@ -16,7 +19,8 @@ class xuatnoiboExport implements FromView
     public function view(): View
     {
         return view('xuatnoibo.index', [
-            'xuatnoibos' => xuatnoibo::latest()->paginate(10)
+            'xuatnoibos' => xuatnoibo::all()
+
         ]);
     }
 }

@@ -10,7 +10,7 @@ use App\xuatnoibo;
 use App\thongtinxe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Maatwebsite\Excel\Concerns\FromView;
 class xuatnoibocontroller extends Controller
 {
     public function index()
@@ -27,7 +27,7 @@ class xuatnoibocontroller extends Controller
     }
     public function export()
     {
-        return Excel::download(new xuatnoiboExport(), 'xuatnoibos.xlsx');
+        return Excel::download(new xuatnoiboExport(), 'xuatnoibo.xlsx');
     }
     public function create()
     {

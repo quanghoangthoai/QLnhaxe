@@ -41,7 +41,7 @@
     @if(sizeof($xuatnoibos) > 0)
         <table class="table table-bordered">
             <tr>
-                <th>số HD</th>
+
                 <th>số máy </th>
                 <th>số khung</th>
                 <th>loại xe</th>
@@ -55,7 +55,7 @@
             </tr>
             @foreach ($xuatnoibos as $xuatnoibo)
                 <tr>
-                    <td>XUATNB{{++$i}}</td>
+
                     <td>{{ $xuatnoibo->thongtinxe->somay }}</td>
                     <td>{{ $xuatnoibo->thongtinxe->sokhung}}</td>
                     <td>{{ $xuatnoibo->thongtinxe->loaixe}}</td>
@@ -83,5 +83,5 @@
     @endif
 
 
-    {!! $xuatnoibos->links() !!}
+
 @endsection
