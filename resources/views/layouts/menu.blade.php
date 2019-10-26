@@ -42,6 +42,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('banxe.index') }} " class="nav-link">
+                        <i class="fa fa-flag"></i> <span>bán xe </span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('congno.index') }} " class="nav-link">
                         <i class="fa fa-flag"></i> <span>công nợ </span>
                     </a>
@@ -55,8 +60,10 @@
                     <a href="{{ route('xuatnoibo.index') }} " class="nav-link">
                         <i class="fa fa-flag"></i> <span>xuất nội bộ </span>
                     </a>
-                </li>
-
+                <li>
+                    <a href="{{ route('banxi.index') }} " class="nav-link">
+                        <i class="fa fa-flag"></i> <span>bán sỉ </span>
+                    </a>
 
             </div>
         </div>

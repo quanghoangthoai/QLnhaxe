@@ -83,5 +83,5 @@
     @endif
 
 
-
+    {!! $xuatnoibos->links() !!}
 @endsection

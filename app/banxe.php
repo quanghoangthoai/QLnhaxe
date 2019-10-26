@@ -9,9 +9,11 @@ use App\nhanvien;
 use Illuminate\Database\Eloquent\Model;
 
 class banxe extends Model
+
 {
+    protected $table='banxe';
     protected $fillable = [
-        'soHD', 'giaban','duatruoc','conlai','tinhtrang','Hovaten','ngaysinh','SDT','ngaymua','diachi','phuong','thanhpho',
+         'giaban','duatruoc','conlai','tinhtrang','name','ngaysinh','sdt','ngaymua','diachi','phuong','thanhpho',
         'tinh','thongtinxe_id','kho_id','tragop_id','nhanvien_id','quatang_id'
     ];
     public function quatang(){
