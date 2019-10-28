@@ -53,9 +53,15 @@
                     <td>{{ $banxe->thongtinxe->tenxe}}</td>
                     <td>{{ $banxe->thongtinxe->doixe}}</td>
                     <td>{{ $banxe->thongtinxe->mauxe}}</td>
-                    <td>{{ $banxe->thongtinxe->sokhung }}</td>
+                    <td>
+                        @if($banxe->status==0)
+
+                        @else
+                            {{ $banxe->thongtinxe->sokhung }}
+                            @endif
+                    </td>
                     <td>{{ $banxe->thongtinxe->somay}}</td>
-                    <td>{{ $banxe->tinhtrang}}</td>
+
                     <td>{{ $banxe->giaban}}</td>
 
                     <td>

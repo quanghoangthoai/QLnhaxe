@@ -31,6 +31,7 @@ Route::get('/search', 'khoController@search');
 
 Route::resource('thongtinxe','xeController');
 Route::get('/search', 'xeController@search');
+Route::get('changeStatus', 'xeController@changeStatus');
 
 Route::resource('quatang','quatangController');
 Route::get('/search', 'quatangController@search');
@@ -56,3 +57,4 @@ Route::get('/search', 'banxiController@search');
 
 Route::resource('banxe','banxeController');
 Route::get('/search', 'banxeController@search');
+

@@ -41,6 +41,7 @@
                 <th>mẫu xe </th>
                 <th>số khung </th>
                 <th>số máy </th>
+                <th>tình trạng </th>
                 <th width="280px">More</th>
             </tr>
             @foreach ($thongtinxes as $thongtinxe)
@@ -50,9 +51,18 @@
                     <td>{{ $thongtinxe->tenxe}}</td>
                     <td>{{ $thongtinxe->doixe}}</td>
                     <td>{{ $thongtinxe->mauxe}}</td>
-                    <td>{{ $thongtinxe->sokhung}}</td>
-                    <td>{{ $thongtinxe->somay}}</td>
+                    <td>
+                        @if($thongtinxe->status==0)
+                    {{ $thongtinxe->sokhung}}
 
+                        @else
+
+                        @endif
+                    </td>
+                    <td>{{ $thongtinxe->somay}}</td>
+                    <td>
+                        <input data-id="{{$thongtinxe->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="đã bán" data-off="chưa bán" {{ $thongtinxe->status ? 'checked' : '' }}>
+                    </td>
                     <td>
                         <form action="{{ route('thongtinxe.destroy',$thongtinxe->id) }}" method="POST">
 

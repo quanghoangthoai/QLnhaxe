@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\banxe;
 use App\thongtinxe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +12,6 @@ class xecontroller extends Controller
     public function index()
     {
         $thongtinxes = thongtinxe::latest()->paginate(10);
-
         return view('thongtinxe.index',compact('thongtinxes'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
     public function search (Request $request){
@@ -55,6 +55,7 @@ class xecontroller extends Controller
             'mauxe' => 'required',
             'sokhung' => 'required',
             'somay' => 'required',
+
         ]);
         $thongtinxe->update($request->all());
         return redirect()->route('thongtinxe.index')->with('success','sửa thành công.');
@@ -62,6 +63,14 @@ class xecontroller extends Controller
     public function destroy(thongtinxe $thongtinxe)
     {
         $thongtinxe->delete();
+
         return redirect()->route('thongtinxe.index')->with('success','xóa thành công.');
+    }
+    public function changeStatus(Request $request)
+    {
+        $thongtinxe= thongtinxe::find($request->id);
+        $thongtinxe->status = $request->status;
+        $thongtinxe->save();
+        return response()->json(['success'=>'Status change successfully.']);
     }
 }

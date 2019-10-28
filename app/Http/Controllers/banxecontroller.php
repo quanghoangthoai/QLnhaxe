@@ -100,4 +100,5 @@ class banxecontroller extends Controller
         $banxe->delete();
         return redirect()->route('banxe.index')->with('success','xóa thành công.');
     }
+
 }

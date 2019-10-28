@@ -21,6 +21,7 @@ class CreateThongtinxeTable extends Migration
             $table->string('mauxe');
             $table->string('sokhung');
             $table->string('somay');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
@@ -33,5 +34,6 @@ class CreateThongtinxeTable extends Migration
     public function down()
     {
         Schema::dropIfExists('thongtinxe');
+
     }
 }
