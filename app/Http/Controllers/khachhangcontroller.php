@@ -2,10 +2,11 @@
 namespace App\Http\Controllers;
 use App\khachhang;
 
-
+use Datatables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Imports\khachhangimport;
+use Maatwebsite\Excel\Facades\Excel;
 class khachhangcontroller extends Controller
 {
     public function index()
@@ -58,5 +59,10 @@ class khachhangcontroller extends Controller
     {
         $khachhang->delete();
         return redirect()->route('khachhang.index')->with('success','xóa thành công.');
+    }
+    public function import()
+    {
+        Excel::import(new khachhangimport() ,request()->file('file'));
+        return back();
     }
 }

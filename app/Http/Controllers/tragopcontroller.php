@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 
+use App\Imports\khachhangimport;
+use App\Imports\tragopimport;
 use App\tragop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Maatwebsite\Excel\Facades\Excel;
 class tragopcontroller extends Controller
 {
     public function index()
@@ -53,5 +55,10 @@ class tragopcontroller extends Controller
     {
         $tragop->delete();
         return redirect()->route('tragop.index')->with('success','xóa thành công.');
+    }
+    public function import()
+    {
+        Excel::import(new tragopimport() ,request()->file('file'));
+        return back();
     }
 }

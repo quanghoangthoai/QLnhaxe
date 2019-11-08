@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 
+use App\banxe;
 use App\kho;
 use App\banxi;
 use App\thongtinxe;
 use App\xuatnoibo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class banxicontroller extends Controller
 {
@@ -74,5 +76,12 @@ class banxicontroller extends Controller
     {
         $banxi->delete();
         return redirect()->route('banxi.index')->with('success','xóa thành công.');
+    }
+    public function changeStatus2(Request $request)
+    {
+        $banxi= banxi::find($request->id);
+        $banxi->status = $request->status;
+        $banxi->save();
+        return response()->json(['success'=>'Status change successfully.']);
     }
 }

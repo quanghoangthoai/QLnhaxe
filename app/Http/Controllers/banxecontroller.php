@@ -9,6 +9,7 @@ use App\kho;
 use App\thongtinxe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class banxecontroller extends Controller
 {
@@ -40,7 +41,6 @@ class banxecontroller extends Controller
             'giaban' => 'required',
             'duatruoc' => 'required',
             'conlai' => 'required',
-            'tinhtrang' => 'required',
             'name' => 'required',
             'ngaysinh' => 'required',
             'sdt' => 'required',
@@ -58,8 +58,9 @@ class banxecontroller extends Controller
         banxe::create($request->all());
         return redirect()->route('banxe.index')->with('success','thêm thành công .');
     }
-    public function show(banxe $banxe)
+    public function show($id)
     {
+        $banxe=banxe::find($id);
         return view('banxe.show',compact('banxe'));
     }
     public function edit(banxe $banxe)
@@ -77,7 +78,6 @@ class banxecontroller extends Controller
             'giaban' => 'required',
             'duatruoc' => 'required',
             'conlai' => 'required',
-            'tinhtrang' => 'required',
             'name' => 'required',
             'ngaysinh' => 'required',
             'sdt' => 'required',
@@ -100,5 +100,11 @@ class banxecontroller extends Controller
         $banxe->delete();
         return redirect()->route('banxe.index')->with('success','xóa thành công.');
     }
-
+    public function changeStatus1(Request $request)
+    {
+        $banxe= banxe::find($request->id);
+        $banxe->status = $request->status;
+        $banxe->save();
+        return response()->json(['success'=>'Status change successfully.']);
+    }
 }

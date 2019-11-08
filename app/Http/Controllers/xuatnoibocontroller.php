@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\banxe;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\xuatnoiboExport;
-
-
 use App\kho;
 use App\xuatnoibo;
 use App\thongtinxe;
@@ -72,5 +71,12 @@ class xuatnoibocontroller extends Controller
     {
         $xuatnoibo->delete();
         return redirect()->route('xuatnoibo.index')->with('success','xóa thành công.');
+    }
+    public function changeStatus3(Request $request)
+    {
+        $xuatnoibo= xuatnoibo::find($request->id);
+        $xuatnoibo->status = $request->status;
+        $xuatnoibo->save();
+        return response()->json(['success'=>'Status change successfully.']);
     }
 }

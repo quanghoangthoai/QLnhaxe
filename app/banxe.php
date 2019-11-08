@@ -13,7 +13,7 @@ class banxe extends Model
 {
     protected $table='banxe';
     protected $fillable = [
-         'giaban','duatruoc','conlai','tinhtrang','name','ngaysinh','sdt','ngaymua','diachi','phuong','thanhpho',
+         'giaban','duatruoc','conlai','status','name','ngaysinh','sdt','ngaymua','diachi','phuong','thanhpho',
         'tinh','thongtinxe_id','kho_id','tragop_id','nhanvien_id','quatang_id'
     ];
     public function quatang(){

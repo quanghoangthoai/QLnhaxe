@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\khachhangimport;
 use  App\kho;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Maatwebsite\Excel\Facades\Excel;
 class khocontroller extends Controller
 {
     public function index()
@@ -55,5 +56,10 @@ class khocontroller extends Controller
     {
         $kho->delete();
         return redirect()->route('kho.index')->with('success','xóa thành công.');
+    }
+    public function import()
+    {
+        Excel::import(new khachhangimport() ,request()->file('file'));
+        return back();
     }
 }

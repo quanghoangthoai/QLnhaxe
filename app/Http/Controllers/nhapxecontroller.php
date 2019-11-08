@@ -7,7 +7,7 @@ use App\nhanvien;
 use App\nhapxe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Maatwebsite\Excel\Facades\Excel;
 class nhapxecontroller extends Controller
 {
     public function index()

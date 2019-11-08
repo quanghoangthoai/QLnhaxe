@@ -83,8 +83,7 @@
                                 <option value="{{ $kho->id }}">{{ $kho->dia_diem }}</option>
                             @endforeach
                         </select>
-                        <label for="tinhtrang">Tình trạng </label>
-                        <input type="text" class="form-control" id="tinhtrang" name="tinhtrang" >
+
                         <label for="giaban">Giá bán</label>
                         <input type="text" class="form-control" id="giaban" name="giaban" >
                         <label for="gop">Góp</label>
@@ -120,10 +119,28 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">thêm</button>
-
-
+                <div id='app'>
+                <a href="" @click.prevent="printme" class="btn btn-default"><i class="fa fa-print"></i> in</a>
+                    </div>
             </div>
         </div>
 
     </form>
+@endsection
+@section('custom_js')
+
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script>
+        $('#createPDF').on('click',function() {
+            var $trigger = $(this);
+
+            $.get('http://127.0.0.1:8000/banxe/id', function(data) {
+                var newWindow = window.open("","_blank");
+                $(newWindow.document.body).html(data);
+                newWindow.print();
+            });
+
+            return false;
+        });
+    </script>
 @endsection

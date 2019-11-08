@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use App\quatang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\quatangimport;
 class quatangcontroller extends Controller
 {
     public function index()
@@ -51,6 +53,11 @@ class quatangcontroller extends Controller
     public function destroy(quatang $quatang)
     {
         $quatang->delete();
-        return redirect()->route('quatang.index')->with('success','xóa thành công.');
+        return redirect()->route('quatang.index')->with('success', 'xóa thành công.');
+    }
+        public function import()
+    {
+        Excel::import(new quatangimport() ,request()->file('file'));
+        return back();
     }
 }

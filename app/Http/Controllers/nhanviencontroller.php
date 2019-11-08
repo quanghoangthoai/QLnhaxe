@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\khachhangimport;
+use App\Imports\nhanvienimport;
 use App\nhanvien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Maatwebsite\Excel\Facades\Excel;
 class nhanviencontroller extends Controller
 {
     public function index()
@@ -58,5 +60,10 @@ class nhanviencontroller extends Controller
     {
         $nhanvien->delete();
         return redirect()->route('nhanvien.index')->with('success','xóa thành công.');
+    }
+    public function import()
+    {
+        Excel::import(new nhanvienimport() ,request()->file('file'));
+        return back();
     }
 }

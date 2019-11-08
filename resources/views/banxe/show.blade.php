@@ -132,7 +132,29 @@
                 {{ $banxe->nhanvien->nhanvienbh }}
             </div>
         </div>
-
+        <button id="createPDF" >
+            PDF print
+        </button>
 
     </div>
+@endsection
+@section('custom_js')
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('#createPDF').on('click',function() {
+            var $trigger = $(this);
+            var id = $(this).data('id');
+            $.get('http://127.0.0.1:8000/banxe/show', function(data) {
+                var newWindow = window.open("","_blank");
+                $(newWindow.document.body).html(data);
+                newWindow.print();
+            });
+
+            return false;
+        });
+    </script>
 @endsection

@@ -8,7 +8,7 @@ use App\congno;
 use App\thongtinxe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Maatwebsite\Excel\Facades\Excel;
 class congnocontroller extends Controller
 {
     public function index()

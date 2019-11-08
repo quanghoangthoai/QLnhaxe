@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\banxe;
+use App\Imports\khachhangimport;
+use App\Imports\thongtinxeimport;
 use App\thongtinxe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\tragopimport;
 class xecontroller extends Controller
 {
     public function index()
@@ -72,5 +75,10 @@ class xecontroller extends Controller
         $thongtinxe->status = $request->status;
         $thongtinxe->save();
         return response()->json(['success'=>'Status change successfully.']);
+    }
+    public function import()
+    {
+        Excel::import(new thongtinxeimport() ,request()->file('file'));
+        return back();
     }
 }

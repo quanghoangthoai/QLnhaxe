@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Imports\quatangimport;
 use App\thongtinxe;
 use App\ktquatang;
 use App\quatang;
 use App\khachhang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Maatwebsite\Excel\Facades\Excel;
 class ktquatangcontroller extends Controller
 {
     public function index()
@@ -66,5 +67,10 @@ class ktquatangcontroller extends Controller
     {
         $ktquatang->delete();
         return redirect()->route('ktquatang.index')->with('success','xóa thành công.');
+    }
+    public function import()
+    {
+        Excel::import(new quatangimport() ,request()->file('file'));
+        return back();
     }
 }
