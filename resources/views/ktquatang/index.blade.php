@@ -38,7 +38,9 @@
                     <td>{{ $ktquatang->ngaynhan}}</td>
                     <td>{{ $ktquatang->thongtinxe->somay}}</td>
                     <td>{{ $ktquatang->khachhang->ngaysinh }}</td>
+
                     <td>
+                        @can('admin')
                         <form action="{{ route('ktquatang.destroy',$ktquatang->id) }}" method="POST">
 
                             <a class="btn btn-info" href="{{ route('ktquatang.show',$ktquatang->id) }}">xem</a>
@@ -49,7 +51,9 @@
 
                             <button type="submit" class="btn btn-danger">xóa</button>
                         </form>
+                        @endcan
                     </td>
+
                 </tr>
             @endforeach
         </table>

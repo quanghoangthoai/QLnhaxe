@@ -41,6 +41,7 @@
                     <td>{{ $kho->name}}</td>
 
                     <td>
+                        @can('admin')
                         <form action="{{ route('kho.destroy',$kho->id) }}" method="POST">
 
                             <a class="btn btn-info" href="{{ route('kho.show',$kho->id) }}">xem</a>
@@ -51,7 +52,9 @@
 
                             <button type="submit" class="btn btn-danger">xóa</button>
                         </form>
+                            @endcan
                     </td>
+
                 </tr>
             @endforeach
         </table>

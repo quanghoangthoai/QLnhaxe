@@ -55,9 +55,8 @@ Route::resource('ktquatang','ktquatangController');
 Route::get('/search', 'ktquatangController@search');
 
 Route::resource('xuatnoibo','xuatnoiboController');
-Route::get('/search', 'xuatnoiboController@search');
 Route::get('export', 'xuatnoiboController@export')->name('export');
-Route::get('changeStatus3', 'xuatnoiController@changeStatus');
+
 
 Route::resource('banxi','banxiController');
 Route::get('/search', 'banxiController@search');

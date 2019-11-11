@@ -36,8 +36,10 @@
             @foreach ($tragops as $tragop)
                 <tr>
                     <td>{{ ++$i }}</td>
-                    <td>{{ $tragop->loaitragop }}</td>
+                    <td>{{ $tragop->loaitragop }}
+
                     <td>
+                        @can('admin')
                         <form action="{{ route('tragop.destroy',$tragop->id) }}" method="POST">
 
                             <a class="btn btn-info" href="{{ route('tragop.show',$tragop->id) }}">xem</a>
@@ -48,7 +50,9 @@
 
                             <button type="submit" class="btn btn-danger">xóa</button>
                         </form>
+                        @endcan
                     </td>
+
                 </tr>
             @endforeach
         </table>

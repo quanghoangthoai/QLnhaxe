@@ -54,6 +54,7 @@
                     <td>{{ $banxe->giaban}}</td>
 
                     <td>
+                        @can('admin')
                         <form action="{{ route('banxe.destroy',$banxe->id) }}" method="POST">
 
                             <a class="btn btn-info" href="{{ route('banxe_show',$banxe->id) }}">xem</a>
@@ -64,7 +65,9 @@
 
                             <button type="submit" class="btn btn-danger">xóa</button>
                         </form>
+                        @endcan
                     </td>
+
                 </tr>
             @endforeach
         </table>

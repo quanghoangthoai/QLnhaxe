@@ -23,7 +23,6 @@
             <tr>
                 <th>stt</th>
                 <th>tên khách hàng </th>
-                <th>ngày mua </th>
                 <th>giá bán </th>
                 <th>trả trước </th>
                 <th>trả lần 1 </th>
@@ -32,8 +31,6 @@
                 <th>tên xe </th>
                 <th>số khung </th>
                 <th>số máy </th>
-                <th>ngày trả </th>
-
                 <th width="280px">More</th>
             </tr>
             </thead>
@@ -41,7 +38,6 @@
                 <tr>
                     <td>{{ ++$i }}</td>
                     <td>{{ $congno->khachhang->Hovaten}}</td>
-                    <td>{{ $congno->ngaymua}}</td>
                     <td>{{ $congno->giaban}}</td>
                     <td>{{ $congno->tratruoc}}</td>
                     <td>{{ $congno->tralan1}}</td>
@@ -50,8 +46,10 @@
                     <td>{{ $congno->thongtinxe->tenxe}}</td>
                     <td>{{ $congno->thongtinxe->sokhung}}</td>
                     <td>{{ $congno->thongtinxe->somay}}</td>
-                    <td>{{ $congno->ngaytra}}</td>
+
+
                     <td>
+                        @can('admin')
                         <form action="{{ route('congno.destroy',$congno->id) }}" method="POST">
                             <a class="btn btn-info" href="{{ route('congno.show',$congno->id) }}">xem</a>
                             <a class="btn btn-primary" href="{{ route('congno.edit',$congno->id) }}">sửa</a>
@@ -60,8 +58,10 @@
                             @method('DELETE')
 
                             <button type="submit" class="btn btn-danger">xóa</button>
+                            @endcan
                         </form>
                     </td>
+
                 </tr>
             @endforeach
         </table>
@@ -96,7 +96,7 @@
             });
             $('.data-table').DataTable({
                 columnDefs: [{
-                    targets: [12],
+                    targets: [10],
                     searchable: false,
                     orderable: false,
                     visible: true

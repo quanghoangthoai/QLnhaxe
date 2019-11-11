@@ -1,5 +1,4 @@
 @extends('xuatnoibo.layout')
-
 @section('content')
     <a href="{{ url('/home') }}">trang chủ</a>
     <div class="row">
@@ -32,7 +31,6 @@
                 <th>số khung</th>
                 <th>loại xe</th>
                 <th>màu xe</th>
-                <th>tình trạng</th>
                 <th>kho xuất</th>
                 <th>kho nhập</th>
                 <th>ngày xuất</th>
@@ -43,19 +41,17 @@
                 <tr>
 
                     <td>{{ $xuatnoibo->thongtinxe->somay }}</td>
-                    <td>@if($banxe->status==0)
+                    <td>
                             {{ $xuatnoibo->thongtinxe->sokhung}}
-                        @else
-                        @endif</td>
+                        </td>
                     <td>{{ $xuatnoibo->thongtinxe->loaixe}}</td>
                     <td>{{ $xuatnoibo->thongtinxe->mauxe}}</td>
-                    <td>
-                        <input data-id="{{$xuatnoibo->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="đã bán" data-off="chưa bán" {{ $xuatnoibo->status ? 'checked' : '' }}>
-                    </td>
+
                     <td>{{ $xuatnoibo->kho->dia_diem}}</td>
                     <td>{{ $xuatnoibo->kho->dia_diem}}</td>
-                    <td>{{ $xuatnoibo->ngayxuat }}</td>
+                    <td>{{ $xuatnoibo->ngayxuat }}
                         <td>
+                            @can('admin')
                         <form action="{{ route('xuatnoibo.destroy',$xuatnoibo->id) }}" method="POST">
                             <a class="btn btn-info" href="{{ route('',$xuatnoibo->id) }}">xem</a>
                             <a class="btn btn-primary" href="{{ route('xuatnoibo.edit',$xuatnoibo->id) }}">sửa</a>
@@ -65,6 +61,7 @@
                         </form>
 
                     </td>
+                        @endcan
                 </tr>
             @endforeach
         </table>
@@ -99,7 +96,7 @@
             });
             $('.data-table').DataTable({
                 columnDefs: [{
-                    targets: [8],
+                    targets: [7],
                     searchable: false,
                     orderable: false,
                     visible: true

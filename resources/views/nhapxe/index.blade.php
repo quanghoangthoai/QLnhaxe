@@ -48,6 +48,7 @@
                     <td>{{ $nhapxe->kho->dia_diem}}</td>
                     <td>{{ $nhapxe->gianhap}}</td>
                     <td>
+                        @can('admin')
                         <form action="{{ route('nhapxe.destroy',$nhapxe->id) }}" method="POST">
 
                             <a class="btn btn-info" href="{{ route('nhapxe.show',$nhapxe->id) }}">xem</a>
@@ -58,6 +59,7 @@
 
                             <button type="submit" class="btn btn-danger">xóa</button>
                         </form>
+                            @endcan
                     </td>
                 </tr>
             @endforeach

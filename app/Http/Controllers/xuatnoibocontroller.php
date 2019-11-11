@@ -31,7 +31,7 @@ class xuatnoibocontroller extends Controller
     }
     public function create(Request $request)
     {
-        $request->user()->authorizeRoles(['employee', 'admin']);
+
         $thongtinxes=thongtinxe::all();
         $khos = kho::all();
 
@@ -50,12 +50,11 @@ class xuatnoibocontroller extends Controller
     }
     public function show(xuatnoibo $xuatnoibo,Request $request)
     {
-        $request->user()->authorizeRoles([ 'admin']);
+
         return view('xuatnoibo.show',compact('xuatnoibo'));
     }
     public function edit(xuatnoibo $xuatnoibo,Request $request)
     {
-        $request->user()->authorizeRoles([ 'admin']);
         $thongtinxes=thongtinxe::all();
         $khos = kho::all();
         return view('xuatnoibo.edit',compact('xuatnoibo','khos','thongtinxes'));
@@ -73,7 +72,7 @@ class xuatnoibocontroller extends Controller
     }
     public function destroy(xuatnoibo $xuatnoibo,Request $request)
     {
-        $request->user()->authorizeRoles([ 'admin']);
+
         $xuatnoibo->delete();
         return redirect()->route('xuatnoibo.index')->with('success','xóa thành công.');
     }

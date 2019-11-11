@@ -40,6 +40,7 @@
                     <td>{{ ++$i }}</td>
                     <td>{{ $quatang->tenquatang }}</td>
                     <td>
+                        @can('admin')
                         <form action="{{ route('quatang.destroy',$quatang->id) }}" method="POST">
 
                             <a class="btn btn-info" href="{{ route('quatang.show',$quatang->id) }}">xem</a>
@@ -49,7 +50,8 @@
                             @method('DELETE')
 
                             <button type="submit" class="btn btn-danger">xóa</button>
-                        </form>
+
+                            @endcan
                     </td>
                 </tr>
             @endforeach

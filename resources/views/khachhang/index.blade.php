@@ -47,7 +47,9 @@
                     <td>{{ $khachhang->ngaysinh}}</td>
                     <td>{{ $khachhang->sdt}}</td>
                     <td>{{ $khachhang->diachi}}</td>
+
                     <td>
+                        @can('admin')
                         <form action="{{ route('khachhang.destroy',$khachhang->id) }}" method="POST">
 
                             <a class="btn btn-info" href="{{ route('khachhang.show',$khachhang->id) }}">xem</a>
@@ -58,7 +60,9 @@
 
                             <button type="submit" class="btn btn-danger">xóa</button>
                         </form>
+                        @endcan
                     </td>
+
                 </tr>
             @endforeach
         </table>

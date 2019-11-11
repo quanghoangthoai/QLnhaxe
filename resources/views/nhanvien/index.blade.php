@@ -43,7 +43,9 @@
                     <td>{{ $nhanvien->nguoinhan }}</td>
                     <td>{{ $nhanvien->nguoikt }}</td>
                     <td>{{ $nhanvien->nhanvienbh }}</td>
+
                     <td>
+                        @can('admin')
                         <form action="{{ route('nhanvien.destroy',$nhanvien->id) }}" method="POST">
 
                             <a class="btn btn-info" href="{{ route('nhanvien.show',$nhanvien->id) }}">xem</a>
@@ -54,7 +56,9 @@
 
                             <button type="submit" class="btn btn-danger">xóa</button>
                         </form>
+                        @endcan
                     </td>
+
                 </tr>
             @endforeach
         </table>
