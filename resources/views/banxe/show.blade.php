@@ -132,9 +132,9 @@
                 {{ $banxe->nhanvien->nhanvienbh }}
             </div>
         </div>
-        <button id="createPDF" >
-            PDF print
-        </button>
+        <div id='app'>
+            <a href="" @click.prevent="printme" class="btn btn-default"><i class="fa fa-print"></i> in</a>
+        </div>
 
     </div>
 @endsection

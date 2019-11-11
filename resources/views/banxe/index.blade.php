@@ -77,7 +77,7 @@
     {!! $banxes->links() !!}
 @endsection
 @section('custom_js')
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <script src="{{ asset('assets/admin/js/plugins/tables/datatables/datatables.min.js') }}"></script>
     <script>
         $(document).ready( function () {

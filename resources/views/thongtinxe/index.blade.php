@@ -58,7 +58,9 @@
                     <td>
                         <input data-id="{{$thongtinxe->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="đã bán" data-off="chưa bán" {{ $thongtinxe->status ? 'checked' : '' }}>
                     </td>
+@can('admin')
                     <td>
+
                         <form action="{{ route('thongtinxe.destroy',$thongtinxe->id) }}" method="POST">
 
                             <a class="btn btn-info" href="{{ route('thongtinxe.show',$thongtinxe->id) }}">xem</a>
@@ -70,6 +72,7 @@
                             <button type="submit" class="btn btn-danger">xóa</button>
                         </form>
                     </td>
+    @endcan
                 </tr>
             @endforeach
         </table>

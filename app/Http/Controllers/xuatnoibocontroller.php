@@ -5,6 +5,7 @@ use App\banxe;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\xuatnoiboExport;
 use App\kho;
+use App\User;
 use App\xuatnoibo;
 use App\thongtinxe;
 use Illuminate\Http\Request;
@@ -12,10 +13,10 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromView;
 class xuatnoibocontroller extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $xuatnoibos = xuatnoibo::latest()->paginate(10);
 
+        $xuatnoibos = xuatnoibo::latest()->paginate(10);
         return view('xuatnoibo.index',compact('xuatnoibos'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
     public function search (Request $request){
@@ -28,8 +29,9 @@ class xuatnoibocontroller extends Controller
     {
         return Excel::download(new xuatnoiboExport(), 'xuatnoibo.xlsx');
     }
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles(['employee', 'admin']);
         $thongtinxes=thongtinxe::all();
         $khos = kho::all();
 
@@ -46,12 +48,14 @@ class xuatnoibocontroller extends Controller
         xuatnoibo::create($request->all());
         return redirect()->route('xuatnoibo.index')->with('success','thêm thành công .');
     }
-    public function show(xuatnoibo $xuatnoibo)
+    public function show(xuatnoibo $xuatnoibo,Request $request)
     {
+        $request->user()->authorizeRoles([ 'admin']);
         return view('xuatnoibo.show',compact('xuatnoibo'));
     }
-    public function edit(xuatnoibo $xuatnoibo)
+    public function edit(xuatnoibo $xuatnoibo,Request $request)
     {
+        $request->user()->authorizeRoles([ 'admin']);
         $thongtinxes=thongtinxe::all();
         $khos = kho::all();
         return view('xuatnoibo.edit',compact('xuatnoibo','khos','thongtinxes'));
@@ -67,8 +71,9 @@ class xuatnoibocontroller extends Controller
         $xuatnoibo->update($request->all());
         return redirect()->route('xuatnoibo.index')->with('success','sửa thành công.');
     }
-    public function destroy(xuatnoibo $xuatnoibo)
+    public function destroy(xuatnoibo $xuatnoibo,Request $request)
     {
+        $request->user()->authorizeRoles([ 'admin']);
         $xuatnoibo->delete();
         return redirect()->route('xuatnoibo.index')->with('success','xóa thành công.');
     }
