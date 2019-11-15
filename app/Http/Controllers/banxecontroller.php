@@ -35,6 +35,10 @@ class banxecontroller extends Controller
         $thongtinxes=thongtinxe::all();
         return view('banxe.create',compact('khos','thongtinxes','tragops','quatangs','nhanviens'));
     }
+    public function xuathdbanle(){
+        return view('banxe.xuathdbanle');
+    }
+
     public function store(Request $request)
     {
         $request->validate([

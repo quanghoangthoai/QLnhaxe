@@ -26,6 +26,9 @@ class banxicontroller extends Controller
         return view('nhapxe.index',compact('nhapxes'))->with('i', (request()->input('page', 1) - 1) * 5);
 
     }
+    public function xuathdbanxi(){
+        return view('banxi.hdbanxi');
+    }
     public function create()
     {
       $khos = kho::all();

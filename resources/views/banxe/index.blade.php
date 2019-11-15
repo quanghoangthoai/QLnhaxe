@@ -9,6 +9,7 @@
 
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
             <a class="btn btn-success " href="{{ route('banxe.create') }}"> nhập xe</a>
+            <a class="btn btn-success " href="{{ route('banxe_xuat') }}"> xuất hóa đơn</a>
         </div>
     </div>
 

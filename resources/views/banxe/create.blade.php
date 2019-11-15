@@ -119,9 +119,7 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">thêm</button>
-                <div id='app'>
-                <a href="" @click.prevent="printme" class="btn btn-default"><i class="fa fa-print"></i> in</a>
-                    </div>
+
             </div>
         </div>
 
@@ -129,7 +127,7 @@
 @endsection
 @section('custom_js')
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <script>
         $('#createPDF').on('click',function() {
             var $trigger = $(this);

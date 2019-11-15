@@ -5,15 +5,9 @@
         <div class="col-lg-12">
             <h2 class="text-center"> xuất nội bộ </h2>
         </div>
-
-    <div class="card-body">
-        <form action="" method="POST" enctype="multipart/form-data">
-            @csrf
-            <a class="btn btn-warning" href="{{ route('export') }}">xuất file</a>
-        </form>
-    </div>
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
             <a class="btn btn-success " href="{{ route('xuatnoibo.create') }}"> thêm </a>
+            <a class="btn btn-success " href="{{ route('banxe_xuatnoibo') }}"> xuất hóa đơn</a>
         </div>
     </div>
 

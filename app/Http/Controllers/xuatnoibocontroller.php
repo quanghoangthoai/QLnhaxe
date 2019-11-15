@@ -25,6 +25,9 @@ class xuatnoibocontroller extends Controller
         return view('xuatnoibo.index',compact('xuatnoibos'))->with('i', (request()->input('page', 1) - 1) * 5);
 
     }
+    public function xuathdnoibo(){
+        return view('xuatnoibo.xuatnb');
+    }
     public function export()
     {
         return Excel::download(new xuatnoiboExport(), 'xuatnoibo.xlsx');

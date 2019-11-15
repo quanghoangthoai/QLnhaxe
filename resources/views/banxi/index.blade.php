@@ -15,6 +15,7 @@
     </div>
     <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
         <a class="btn btn-success " href="{{ route('banxi.create') }}"> thêm </a>
+        <a class="btn btn-success " href="{{ route('banxe_xuatxi') }}"> xuất hóa đơn</a>
     </div>
     </div>
 
