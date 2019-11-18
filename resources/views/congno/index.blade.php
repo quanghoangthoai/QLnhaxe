@@ -36,6 +36,7 @@
             </thead>
             @foreach ($congnos as $congno)
                 <tr>
+                    @if($congno->conlai!=0)
                     <td>{{ ++$i }}</td>
                     <td>{{ $congno->khachhang->Hovaten}}</td>
                     <td>{{ $congno->giaban}}</td>
@@ -61,6 +62,8 @@
                             @endcan
                         </form>
                     </td>
+                        @else
+                    @endif
 
                 </tr>
             @endforeach
