@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNhanvienTable extends Migration
+class CreateThungoaiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateNhanvienTable extends Migration
      */
     public function up()
     {
-        Schema::create('nhanvien', function (Blueprint $table) {
+        Schema::create('thungoai', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('chucvu');
-            $table->string('sdt');
+            $table->date('ngaythu');
+            $table->boolean('loaithu');
+            $table->integer('tienthu');
+            $table->text('ghichu');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateNhanvienTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nhanvien');
+        Schema::dropIfExists('thungoai');
     }
 }

@@ -47,6 +47,7 @@ Route::post('timport', 'tragopController@import')->name('timport');
 
 Route::resource('nhapxe','nhapxeController');
 Route::get('/search', 'nhapxeController@search');
+Route::post('nhapxeimport', 'nhapxeController@import')->name('nhapxeimport');
 
 Route::resource('congno','congnoController');
 Route::get('/search', 'congnoController@search');
@@ -55,7 +56,6 @@ Route::resource('ktquatang','ktquatangController');
 Route::get('/search', 'ktquatangController@search');
 
 Route::resource('xuatnoibo','xuatnoiboController');
-
 Route::get('export', 'xuatnoiboController@export')->name('export');
 Route::get('hoadonnoibo', 'xuatnoiboController@xuathdnoibo')->name('banxe_xuatnoibo');
 
@@ -66,7 +66,9 @@ Route::get('changeStatus2', 'banxiController@changeStatus');
 Route::get('hoadonbanxi', 'banxiController@xuathdbanxi')->name('banxe_xuatxi');
 
 Route::resource('banxe','banxeController');
-Route::get('/search', 'banxeController@search');
 Route::get('changeStatus1', 'banxeController@changeStatus1');
+Route::get('search', 'banxeController@search')->name('cities.search');
+Route::get('searchbanxe', 'banxeController@searchSokhung')->name('sokhung.search');
+
 Route::get('show/{id}', 'banxeController@show')->name('banxe_show');
 Route::get('hoadonbanxe', 'banxeController@xuathdbanle')->name('banxe_xuat');

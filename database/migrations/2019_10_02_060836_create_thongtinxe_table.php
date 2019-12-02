@@ -21,6 +21,19 @@ class CreateThongtinxeTable extends Migration
             $table->string('mauxe');
             $table->string('sokhung');
             $table->string('somay');
+            $table->string('dongxe');
+            $table->string('nhacc');
+            $table->string('dangkiem')->nullable();
+            $table->string('nguoinhan');
+            $table->string('ngaynhan');
+            $table->string('ngayhd')->nullable();
+            $table->string('mahd')->nullable();
+            $table->string('khonhan');
+            $table->string('khocuoi');
+            $table->string('tinhtrang')->default(0);
+            $table->string('baohanh')->default(0);
+            $table->date('ngayquet');
+
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

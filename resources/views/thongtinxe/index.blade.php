@@ -56,7 +56,7 @@
                     </td>
                     <td>{{ $thongtinxe->somay}}</td>
                     <td>
-                        <input data-id="{{$thongtinxe->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="đã bán" data-off="chưa bán" {{ $thongtinxe->status ? 'checked' : '' }}>
+                        <input data-id="{{$thongtinxe->id}}" class="toggle-class" type="checkbox" name="status" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="đã bán" data-off="còn" {{ $thongtinxe->status ? 'checked' : '' }}>
                     </td>
 
                     <td>
@@ -86,6 +86,31 @@
     {!! $thongtinxes->links() !!}
 @endsection
 @section('custom_js')
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    <script>
+        $(function() {
+            $('.toggle-class').change(function() {
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '/changeStatus',
+                    data: {'status': status, 'id': id},
+                    success: function(data){
+                        console.log(data.success)
+                    }
+                });
+            })
+        })
+    </script>
+    <script>let elems = Array.prototype.slice.call(document.querySelectorAll('.toggle-class'));
+
+        elems.forEach(function(html) {
+            let switchery = new Switchery(html,  { size: 'small' });
+        });</script>
     <script src="{{ asset('assets/admin/js/plugins/tables/datatables/datatables.min.js') }}"></script>
     <script>
         $(document).ready( function () {
@@ -93,26 +118,28 @@
                 console.warn('Warning - datatables.min.js is not loaded.');
                 return;
             }
-
             // Setting datatable defaults
-            $.extend( $.fn.dataTable.defaults, {
+            $.extend($.fn.dataTable.defaults, {
                 autoWidth: false,
                 dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
                 language: {
-                    sInfo:"Hiển thị _START_ đến _END_ của _TOTAL_ bản ghi",
+                    sInfo: "Hiển thị _START_ đến _END_ của _TOTAL_ bản ghi",
                     search: '<span>Tìm kiếm:</span> _INPUT_',
                     searchPlaceholder: 'Nhập tìm kiếm...',
                     lengthMenu: '<span>Hiển thị:</span> _MENU_',
-                    paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
+                    paginate: {
+                        'first': 'First',
+                        'last': 'Last',
+                        'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;',
+                        'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;'
+                    }
                 }
             });
             $('.data-table').DataTable({
-                columnDefs: [{
-                    targets: [5],
-                    searchable: false,
-                    orderable: false,
-                    visible: true
-                }]
+                order: [[0, "asc"]],
+                columnDefs: [
+                    {targets: [8], searchable: false, orderable: false, visible: true}
+                ]
             });
         });
     </script>

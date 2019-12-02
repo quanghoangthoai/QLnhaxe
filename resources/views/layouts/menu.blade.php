@@ -26,11 +26,11 @@
                         <i class="fa fa-flag"></i> <span>thông tin xe </span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('quatang.index') }} " class="nav-link">
-                        <i class="fa fa-flag"></i> <span>quà tặng </span>
-                    </a>
-                </li>
+{{--                <li>--}}
+{{--                    <a href="{{ route('quatang.index') }} " class="nav-link">--}}
+{{--                        <i class="fa fa-flag"></i> <span>quà tặng </span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li>
                     <a href="{{ route('tragop.index') }} " class="nav-link">
                         <i class="fa fa-flag"></i> <span>trả góp </span>
