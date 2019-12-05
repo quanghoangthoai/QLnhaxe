@@ -30,7 +30,10 @@ class khachhangcontroller extends Controller
             'phuong' => 'required',
             'thanhpho' => 'required',
             'tinh' => 'required',
-        ]);
+        ]
+
+        );
+
         khachhang::create($request->all());
         return redirect()->route('khachhang.index')->with('success','thêm thành công .');
     }

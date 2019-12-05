@@ -28,10 +28,6 @@
             <!-- div ban xe-->
                 <div class=" col-sm-6">
                     <div class="form-group">
-
-
-
-
                         <label for="hoten">Số HD</label>
                         <input type="text" class="form-control" name="sohd"  >
                         <label for="hoten">Họ và Tên</label>
@@ -88,25 +84,29 @@
                 <div class=" col-sm-6">
                     <div class="form-group" >
                         <label for="tenxe">Số máy</label>
-                        <select class="form-control" id="somay" name="thongtinxe_id">
+                        <select class="form-control" id='somay' name='somay'>
                             @foreach($thongtinxes as $thongtinxe)
-                               @if($thongtinxe->status==0)
-                                <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->somay }}</option>
-                                   @else
+                                @if($thongtinxe->status==0)
+                                    <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->somay }}
+
+                                    </option>
+                                @else
                                 @endif
                             @endforeach
                         </select>
                         <label for="tenxe">Số khung</label>
-                        <select class="form-control js-example-basic-single" id="sokhung" name="thongtinxe_id">
+                        <select class="form-control " id="sokhung" name="thongtinxe_id">
                             @foreach($thongtinxes as $thongtinxe)
                                 @if($thongtinxe->status==0)
-                                <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->sokhung }}</option>
+                                <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->sokhung }}
+
+                                </option>
                                 @else
                                     @endif
                             @endforeach
                         </select>
                         <label for="tenxe">Tên xe</label>
-                  <select class="form-control js-example-basic-single" id="tenxe" name="thongtinxe_id">
+                  <select class="form-control js-example-basic-single" id="tenxe" name="">
                           @foreach($thongtinxes as $thongtinxe)
                           @if($thongtinxe->status==0)
                                <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->tenxe }}</option>
@@ -115,7 +115,7 @@
                          @endforeach
                    </select>
                         <label for="mauxe">Màu xe</label>
-                        <select class="form-control js-example-basic-single" id="mauxe" name="thongtinxe_id">
+                        <select class="form-control js-example-basic-single" id="mauxe" name="">
                             @foreach($thongtinxes as $thongtinxe)
                                 @if($thongtinxe->status==0)
                                 <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->mauxe }}</option>
@@ -173,7 +173,7 @@
 
             </div>
         </div>
-
+        {{ csrf_field() }}
     </form>
 @endsection
 @section('custom_js')
@@ -200,37 +200,64 @@
 
   <script >
       $(document).ready(function() {
-          // $("#nameid").chosen();
-          // $("#ngaysinh").chosen();
-          // $("#sdt").chosen();
-          // $("#phuong").chosen();
-          // $("#thanhpho").chosen();
-          // $("#tinh").chosen();
-          // $("#somay").chosen();
-          // $("#sokhung").chosen();
-          // $("#tenxe").chosen();
-          // $("#mauxe").chosen();
-          // $("#kho").chosen();
-          // $("#gop").chosen();
-
-$('#sdt').select2({
-                ajax: {
-                    url: '{{ route("cities.search") }}',
-                    dataType: 'json',
-                },
-            });
-       });
       $('#sokhung').select2({
           ajax: {
               url: '{{ route("sokhung.search") }}',
               dataType: 'json',
           },
       });
+      });
     </script>
 
+{{--    <script type="text/javascript">--}}
+
+{{--        $("select[name='thongtinxe_id']").change(function(){--}}
+{{--            var thongtinxe_id = $(this).val();--}}
+{{--            var token = $("input[name='_token']").val();--}}
+{{--            $.ajax({--}}
+{{--                url: '{{route('getbanxe')}}',--}}
+{{--                method: 'post',--}}
+{{--                data: {thongtinxe_id:thongtinxe_id, _token:token},--}}
+{{--                success: function(data) {--}}
+{{--                    $("select[name='somay']").html('');--}}
+{{--                    $("select[name='somay']").html(data.options);--}}
+{{--                }--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
+    <script>
+        $(document).ready(function(){
+            $('#sokhung').change(function(){
+                if($(this).val() != '')
+                {
+                    var select = $(this).attr("id");
+                    var value = $(this).val();
+                    var dependent = $(this).data('dependent');
+                    var _token = $('input[name="_token"]').val();
+                    $.ajax({
+                        url:"{{ route('dynamicdependent.fetch') }}",
+                        method:"POST",
+                        data:{select:select, value:value, _token:_token, dependent:dependent},
+                        success:function(result)
+                        {
+                            $('#'+dependent).html(result);
+                        }
+
+                    })
+                }
+            });
+
+            $('#country').change(function(){
+                $('#state').val('');
+                $('#city').val('');
+            });
+
+            $('#state').change(function(){
+                $('#city').val('');
+            });
 
 
-
+        });
 
 
 @endsection

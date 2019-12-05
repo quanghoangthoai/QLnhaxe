@@ -24,10 +24,6 @@ class CreateThongtinxeTable extends Migration
             $table->string('dongxe');
             $table->string('nhacc');
             $table->string('dangkiem')->nullable();
-            $table->string('nguoinhan');
-            $table->string('ngaynhan');
-            $table->string('ngayhd')->nullable();
-            $table->string('mahd')->nullable();
             $table->string('khonhan');
             $table->string('khocuoi');
             $table->string('tinhtrang')->default(0);

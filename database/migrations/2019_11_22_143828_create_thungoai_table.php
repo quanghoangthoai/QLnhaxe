@@ -16,7 +16,7 @@ class CreateThungoaiTable extends Migration
         Schema::create('thungoai', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('ngaythu');
-            $table->boolean('loaithu');
+            $table->string('loaithu');
             $table->integer('tienthu');
             $table->text('ghichu');
             $table->timestamps();

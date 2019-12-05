@@ -37,6 +37,7 @@ class xecontroller extends Controller
             'sokhung' => 'required',
             'somay' => 'required',
 
+
         ]);
         thongtinxe::create($request->all());
         return redirect()->route('thongtinxe.index')->with('success','thêm thành công .');
@@ -73,6 +74,13 @@ class xecontroller extends Controller
     {
         $thongtinxe= thongtinxe::find($request->id);
         $thongtinxe->status = $request->status;
+        $thongtinxe->save();
+        return response()->json(['success'=>'Status change successfully.']);
+    }
+    public function changeBaohanh(Request $request)
+    {
+        $thongtinxe= thongtinxe::find($request->id);
+        $thongtinxe->baohanh = $request->baohanh;
         $thongtinxe->save();
         return response()->json(['success'=>'Status change successfully.']);
     }

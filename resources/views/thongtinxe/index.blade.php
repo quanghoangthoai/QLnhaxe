@@ -47,18 +47,15 @@
                     <td>{{ $thongtinxe->doixe}}</td>
                     <td>{{ $thongtinxe->mauxe}}</td>
                     <td>
-                        @if($thongtinxe->status==0)
                     {{ $thongtinxe->sokhung}}
-
-                        @else
-
-                        @endif
                     </td>
                     <td>{{ $thongtinxe->somay}}</td>
                     <td>
                         <input data-id="{{$thongtinxe->id}}" class="toggle-class" type="checkbox" name="status" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="đã bán" data-off="còn" {{ $thongtinxe->status ? 'checked' : '' }}>
                     </td>
-
+                    <td>
+                        <input data-id="{{$thongtinxe->id}}" class="toggle-class" type="checkbox" name="baohanh" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="đã quét" data-off="chưa quyét" {{ $thongtinxe->baohanh ? 'checked' : '' }}>
+                    </td>
                     <td>
                         @can('admin')
                         <form action="{{ route('thongtinxe.destroy',$thongtinxe->id) }}" method="POST">
@@ -99,6 +96,23 @@
                     dataType: "json",
                     url: '/changeStatus',
                     data: {'status': status, 'id': id},
+                    success: function(data){
+                        console.log(data.success)
+                    }
+                });
+            })
+        })
+    </script>
+    <script>
+        $(function() {
+            $('.toggle-class').change(function() {
+                var baohanh = $(this).prop('checked') == true ? 1 : 0;
+                var id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '/changeBaohanh',
+                    data: {'baohanh': baohanh, 'id': id},
                     success: function(data){
                         console.log(data.success)
                     }

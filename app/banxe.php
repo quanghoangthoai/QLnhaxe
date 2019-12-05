@@ -39,4 +39,5 @@ class banxe extends Model
         return $this->hasMany('App\ktquatang', 'banxe_id','id');
     }
 
+
 }

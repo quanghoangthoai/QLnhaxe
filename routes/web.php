@@ -35,6 +35,7 @@ Route::post('khoimport', 'khoController@import')->name('khoimport');
 Route::resource('thongtinxe','xeController');
 Route::get('/search', 'xeController@search');
 Route::get('changeStatus', 'xeController@changeStatus');
+Route::get('changeBaohanh', 'xeController@changebaohanh');
 Route::post('ximport', 'xeController@import')->name('ximport');
 
 Route::resource('quatang','quatangController');
@@ -69,6 +70,13 @@ Route::resource('banxe','banxeController');
 Route::get('changeStatus1', 'banxeController@changeStatus1');
 Route::get('search', 'banxeController@search')->name('cities.search');
 Route::get('searchbanxe', 'banxeController@searchSokhung')->name('sokhung.search');
+Route::post('getbanxe', 'banxeController@selectAjax')->name('getbanxe');
 
 Route::get('show/{id}', 'banxeController@show')->name('banxe_show');
 Route::get('hoadonbanxe', 'banxeController@xuathdbanle')->name('banxe_xuat');
+
+Route::resource('chi','chiController');
+
+Route::resource('thungoai','thungoaiController');
+
+Route::resource('phukien','phukienController');

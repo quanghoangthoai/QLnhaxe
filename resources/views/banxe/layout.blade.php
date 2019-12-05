@@ -3,6 +3,7 @@
 <head>
     <title>thông tin xe bán </title>
     <base href="{{ asset('') }}">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script  src="js/jquery.js"></script>
     <script src="js/addrow.js"></script>

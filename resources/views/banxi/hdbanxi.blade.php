@@ -42,14 +42,10 @@
                                 <th scope="col">số khung</th>
                                 <th scope="col">số máy</th>
                                 <th scope="col">giá bán</th>
+                                <th><button type="button" name="add" class="btn btn-success btn-xs add"><span class="glyphicon glyphicon-plus"></span>+</button></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                            <tr class="themdong">
-                                <button class="btn btn-success" id="hdxuatbx"> + ADD ROW</button>
-                            </tr>
-
                             </tbody>
                         </table>
                     </div>
@@ -82,20 +78,26 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
         <script>
-            $(document).ready(function () {
-                $('#hdxuatbx').click(function (event) {
-                    var addcontrol = "<tr>"
-                    /* Act on the event */
-                    addcontrol += "<td ><input type='text' ></td>"
-                    addcontrol += "<td><input type='text'  id='newrow'></td>"
-                    addcontrol += "<td><input type='text'  id='newrow'></td>"
-                    addcontrol += "<td><input type='text'  id='newrow'></td>"
-                    addcontrol += "<td><input type='text'  id='newrow'></td>"
-                    addcontrol += "<td><input type='text'  id='newrow'></td>"
-                    addcontrol += "</tr>";
-                    $(" table tbody").append(addcontrol);
-                });
+            var count = 0;
+
+            $(document).on('click', '.add', function(){
+                count++;
+                var html = '';
+                html += '<tr>';
+                html += '<td><input type="text" name="item_name[]" class="form-control item_name" /></td>';
+                html += '<td><select name="item_category[]" class="form-control item_category" data-sub_category_id="'+count+'"><option value="">Select Category</option></select></td>';
+                html += '<td><select name="item_sub_category[]" class="form-control item_sub_category" id="item_sub_category'+count+'"><option value="">Select Sub Category</option></select></td>';
+                html += '<td><input type="text" name="item_name[]" class="form-control item_name" /></td>';
+                html += '<td><input type="text" name="item_name[]" class="form-control item_name" /></td>';
+                html += '<td><input type="text" name="item_name[]" class="form-control item_name" /></td>';
+                html += '<td><button type="button" name="remove" class="btn btn-danger btn-xs remove"><span class="glyphicon glyphicon-minus"></span>-</button></td>';
+                $('tbody').append(html);
             });
+
+            $(document).on('click', '.remove', function(){
+                $(this).closest('tr').remove();
+            });
+
     </script>
 
 @endsection
