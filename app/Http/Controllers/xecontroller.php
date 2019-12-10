@@ -36,6 +36,9 @@ class xecontroller extends Controller
             'mauxe' => 'required',
             'sokhung' => 'required',
             'somay' => 'required',
+            'dongxe'=>'required',
+            'nhacc'=>'required',
+            'ngayquet'=>'required',
 
 
         ]);
@@ -59,7 +62,9 @@ class xecontroller extends Controller
             'mauxe' => 'required',
             'sokhung' => 'required',
             'somay' => 'required',
-
+            'dongxe'=>'required',
+            'nhacc'=>'required',
+            'ngayquet'=>'required',
         ]);
         $thongtinxe->update($request->all());
         return redirect()->route('thongtinxe.index')->with('success','sửa thành công.');

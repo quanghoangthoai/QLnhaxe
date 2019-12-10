@@ -1,16 +1,18 @@
-@extends('banxe.layout')
+@extends('khophukien.layout')
 
 @section('content')
-    <a href="{{ url('/home') }}">trang chủ</a>
+    <a href="{{ url('/home') }}">TRANG CHỦ</a>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center">thông tin xe bán </h2>
+            <h2 class="text-center">THÔNG TIN KHO PHỤ KIỆN </h2>
+        </div>
+
         </div>
 
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
-            <a class="btn btn-success " href="{{ route('banxe.create') }}"> nhập xe</a>
-
+            <a class="btn btn-success " href="{{ route('khophukien.create') }}"> Thêm kho phụ kiện</a>
         </div>
+
     </div>
 
     @if ($message = Session::get('success'))
@@ -19,40 +21,43 @@
         </div>
     @endif
 
-    @if(sizeof($banxes) > 0)
+    @if(sizeof($khophukiens) > 0)
         <table class="table table-bordered data-table">
-            <thead class="bg-light">
+            <thead>
             <tr>
-                <th>stt</th>
-                <th>Loại xe </th>
-                <th>Tên xe</th>
-                <th>Mẫu xe</th>
-                <th>Số khung</th>
-                <th>Số máy</th>
-                <th>Tình trạng</th>
-                <th>Giá bán</th>
-                <th width="280px">More</th>
+                <th>STT</th>
+                <th>Tên kho</th>
+                <th>Địa điểm</th>
+                <th>Tên phụ kiện</th>
+                <th>Số lượng bán</th>
+                <th>Số lượng tồn</th>
+                <th>Nhập</th>
+                <th>Ngày nhập</th>
+                <th>Còn lại</th>
+                <th width="280px">Thao tác</th>
             </tr>
             </thead>
-            @foreach ($banxes as $banxe)
+            @foreach ($khophukiens as $khophukien)
                 <tr>
                     <td>{{ ++$i }}</td>
-                    <td>{{ $banxe->thongtinxe->loaixe }}</td>
-                    <td>{{ $banxe->thongtinxe->tenxe}}</td>
-                    <td>{{ $banxe->thongtinxe->mauxe}}</td>
-                    <td>{{ $banxe->thongtinxe->sokhung }} </td>
-                    <td>{{ $banxe->thongtinxe->somay}}</td>
-                    <td>{{$banxe->tinhtrang}}</td>
-                    <td>{{ $banxe->giaban}}</td>
+                    <td>{{ $khophukien->tenkho}}</td>
+                    <td>{{ $khophukien->dia_diem}}</td>
+                    <td>{{ $khophukien->banphukien->tenphukien}}</td>
+                    <td>{{ $khophukien->banphukien->soluong}}</td>
+                    <td>{{ $khophukien->soluongton}}</td>
+                    <td>{{ $khophukien->nhap}}</td>
+                    <td>{{ $khophukien->ngaynhap}}</td>
+                    <td>{{ $khophukien->conlai}}</td>
                     <td>
                         @can('admin')
-                        <form action="{{ route('banxe.destroy',$banxe->id) }}" method="POST">
-                            <a href="{{ route('banxe.show',$banxe->id) }}"  class="btn btn-default"><i class="fa fa-print"></i> print </a>
-                            <a class="btn btn-primary" href="{{ route('banxe.edit',$banxe->id) }}">sửa</a>
+                        <form action="{{ route('khophukien.destroy',$khophukien->id) }}" method="POST">
+
+                            <a class="btn btn-primary" href="{{ route('khophukien.edit',$khophukien->id) }}">Sửa</a>
+
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit" class="btn btn-danger">xóa</button>
+                            <button type="submit" class="btn btn-danger">Xóa</button>
                         </form>
                         @endcan
                     </td>
@@ -66,11 +71,9 @@
     @endif
 
 
-    {!! $banxes->links() !!}
+    {!! $khophukiens->links() !!}
 @endsection
 @section('custom_js')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="{{ asset('assets/admin/js/plugins/tables/datatables/datatables.min.js') }}"></script>
     <script>
         $(document).ready( function () {
@@ -93,7 +96,7 @@
             });
             $('.data-table').DataTable({
                 columnDefs: [{
-                    targets: [7],
+                    targets: [8],
                     searchable: false,
                     orderable: false,
                     visible: true
@@ -101,5 +104,7 @@
             });
         });
     </script>
-
 @endsection
+
+
+

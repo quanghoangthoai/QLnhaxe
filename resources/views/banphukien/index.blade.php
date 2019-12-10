@@ -1,16 +1,18 @@
-@extends('banxe.layout')
+@extends('banphukien.layout')
 
 @section('content')
-    <a href="{{ url('/home') }}">trang chủ</a>
+    <a href="{{ url('/home') }}">TRANG CHỦ</a>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center">thông tin xe bán </h2>
+            <h2 class="text-center">THÔNG TIN BÁN PHỤ KIỆN </h2>
+        </div>
+
         </div>
 
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
-            <a class="btn btn-success " href="{{ route('banxe.create') }}"> nhập xe</a>
-
+            <a class="btn btn-success " href="{{ route('banphukien.create') }}"> Thêm bán phụ kiện</a>
         </div>
+
     </div>
 
     @if ($message = Session::get('success'))
@@ -19,40 +21,39 @@
         </div>
     @endif
 
-    @if(sizeof($banxes) > 0)
+    @if(sizeof($banphukiens) > 0)
         <table class="table table-bordered data-table">
-            <thead class="bg-light">
+            <thead>
             <tr>
-                <th>stt</th>
-                <th>Loại xe </th>
-                <th>Tên xe</th>
-                <th>Mẫu xe</th>
-                <th>Số khung</th>
+                <th>STT</th>
+                <th>Ngày bán</th>
                 <th>Số máy</th>
-                <th>Tình trạng</th>
-                <th>Giá bán</th>
-                <th width="280px">More</th>
+                <th>Tên phụ kiện</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Tổng tiền</th>
+                <th width="280px">Thao tác</th>
             </tr>
             </thead>
-            @foreach ($banxes as $banxe)
+            @foreach ($banphukiens as $banphukien)
                 <tr>
                     <td>{{ ++$i }}</td>
-                    <td>{{ $banxe->thongtinxe->loaixe }}</td>
-                    <td>{{ $banxe->thongtinxe->tenxe}}</td>
-                    <td>{{ $banxe->thongtinxe->mauxe}}</td>
-                    <td>{{ $banxe->thongtinxe->sokhung }} </td>
-                    <td>{{ $banxe->thongtinxe->somay}}</td>
-                    <td>{{$banxe->tinhtrang}}</td>
-                    <td>{{ $banxe->giaban}}</td>
+                    <td>{{ $banphukien->ngayban}}</td>
+                    <td>{{ $banphukien->somay}}</td>
+                    <td>{{ $banphukien->tenphukien}}</td>
+                    <td>{{ $banphukien->soluong}}</td>
+                    <td>{{ $banphukien->gia}}</td>
+                    <td>{{ $banphukien->tongtien}}</td>
                     <td>
                         @can('admin')
-                        <form action="{{ route('banxe.destroy',$banxe->id) }}" method="POST">
-                            <a href="{{ route('banxe.show',$banxe->id) }}"  class="btn btn-default"><i class="fa fa-print"></i> print </a>
-                            <a class="btn btn-primary" href="{{ route('banxe.edit',$banxe->id) }}">sửa</a>
+                        <form action="{{ route('banphukien.destroy',$banphukien->id) }}" method="POST">
+
+                            <a class="btn btn-primary" href="{{ route('banphukien.edit',$banphukien->id) }}">Sửa</a>
+
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit" class="btn btn-danger">xóa</button>
+                            <button type="submit" class="btn btn-danger">Xóa</button>
                         </form>
                         @endcan
                     </td>
@@ -66,11 +67,9 @@
     @endif
 
 
-    {!! $banxes->links() !!}
+    {!! $banphukiens->links() !!}
 @endsection
 @section('custom_js')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="{{ asset('assets/admin/js/plugins/tables/datatables/datatables.min.js') }}"></script>
     <script>
         $(document).ready( function () {
@@ -93,7 +92,7 @@
             });
             $('.data-table').DataTable({
                 columnDefs: [{
-                    targets: [7],
+                    targets: [6],
                     searchable: false,
                     orderable: false,
                     visible: true
@@ -101,5 +100,7 @@
             });
         });
     </script>
-
 @endsection
+
+
+
