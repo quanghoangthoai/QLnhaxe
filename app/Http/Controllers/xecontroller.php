@@ -77,6 +77,7 @@ class xecontroller extends Controller
     }
     public function changeStatus(Request $request)
     {
+
         $thongtinxe= thongtinxe::find($request->id);
         $thongtinxe->status = $request->status;
         $thongtinxe->save();
@@ -84,6 +85,7 @@ class xecontroller extends Controller
     }
     public function changeBaohanh(Request $request)
     {
+
         $thongtinxe= thongtinxe::find($request->id);
         $thongtinxe->baohanh = $request->baohanh;
         $thongtinxe->save();

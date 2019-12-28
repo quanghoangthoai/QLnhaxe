@@ -16,6 +16,7 @@ class banxecontroller extends Controller
 {
     public function index()
     {
+
         $banxes = banxe::latest()->paginate(10);
 
         return view('banxe.index',compact('banxes'))->with('i', (request()->input('page', 1) - 1) * 10);
@@ -33,8 +34,22 @@ class banxecontroller extends Controller
             ->get(['id', 'sokhung as text']);
         return ['results' => $cities];
     }
-
-
+    public function searchSDT(Request $request)
+    {
+        $cities = khachhang::where('sdt', 'LIKE', '%'.$request->input('term', '').'%')
+            ->get(['id', 'sdt as text']);
+        return ['results' => $cities];
+    }
+    public function selectsokhung(Request $request)
+    {
+            $data=DB::table('thongtinxe')->find($request['sokhung']);
+            return response()->json(['data'=>$data]);
+    }
+    public function selectSDT(Request $request)
+    {
+        $data=DB::table('khachhang')->find($request['sdt']);
+        return response()->json(['data'=>$data]);
+    }
 
     public function create()
     {
@@ -133,6 +148,6 @@ class banxecontroller extends Controller
         $banxe= banxe::find($request->id);
         $banxe->status = $request->status;
         $banxe->save();
-        return response()->json(['success'=>'Status change successfully.']);
+        return response()->json(['success'=>'Đã thay đổi trạng thái.']);
     }
 }

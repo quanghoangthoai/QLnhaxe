@@ -65,7 +65,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">thêm</button>
+                <button type="submit" class="btn btn-primary">Thêm</button>
             </div>
         </div>
 

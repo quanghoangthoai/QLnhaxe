@@ -4,11 +4,11 @@
     <a href="{{ url('/home') }}">trang chủ</a>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center">thông tin xe bán </h2>
+            <h2 class="text-center"> </h2>
         </div>
 
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
-            <a class="btn btn-success " href="{{ route('banxe.create') }}"> nhập xe</a>
+            <a class="btn btn-success " href="{{ route('banxe.create') }}"> Nhập xe</a>
 
         </div>
     </div>
@@ -20,10 +20,10 @@
     @endif
 
     @if(sizeof($banxes) > 0)
-        <table class="table table-bordered data-table">
-            <thead class="bg-light">
+        <table class="table table-bordered data-table" >
+            <thead class="bg-light" >
             <tr>
-                <th>stt</th>
+                <th>STT</th>
                 <th>Loại xe </th>
                 <th>Tên xe</th>
                 <th>Mẫu xe</th>
@@ -35,7 +35,8 @@
             </tr>
             </thead>
             @foreach ($banxes as $banxe)
-                <tr>
+                <tbody>
+                <tr >
                     <td>{{ ++$i }}</td>
                     <td>{{ $banxe->thongtinxe->loaixe }}</td>
                     <td>{{ $banxe->thongtinxe->tenxe}}</td>
@@ -47,18 +48,27 @@
                     <td>
                         @can('admin')
                         <form action="{{ route('banxe.destroy',$banxe->id) }}" method="POST">
-                            <a href="{{ route('banxe.show',$banxe->id) }}"  class="btn btn-default"><i class="fa fa-print"></i> print </a>
-                            <a class="btn btn-primary" href="{{ route('banxe.edit',$banxe->id) }}">sửa</a>
+                            <a href="{{ route('banxe.show',$banxe->id) }}"  class="btn btn-default"><i class="fa fa-print"></i> IN </a>
+                            <a class="btn btn-primary" href="{{ route('banxe.edit',$banxe->id) }}">SỬA</a>
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit" class="btn btn-danger">xóa</button>
+                            <button type="submit" class="btn btn-danger">XÓA</button>
                         </form>
                         @endcan
                     </td>
 
                 </tr>
+
+                </tbody>
+
             @endforeach
+            <tfoot>
+            <tr>
+                <td colspan="7">Sum</td>
+                <td colspan="2">$180</td>
+            </tr>
+            </tfoot>
         </table>
 
     @else
@@ -69,8 +79,7 @@
     {!! $banxes->links() !!}
 @endsection
 @section('custom_js')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
     <script src="{{ asset('assets/admin/js/plugins/tables/datatables/datatables.min.js') }}"></script>
     <script>
         $(document).ready( function () {
@@ -101,5 +110,13 @@
             });
         });
     </script>
-
+    <script>
+        function printContent(el){
+            var restorepage = document.body.innerHTML;
+            var printcontent = document.getElementById(el).innerHTML;
+            document.body.innerHTML = printcontent;
+            window.print();
+            document.body.innerHTML = restorepage;
+        }
+    </script>
 @endsection

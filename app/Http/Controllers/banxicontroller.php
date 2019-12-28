@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\banxe;
+use App\khachhang;
 use App\kho;
 use App\banxi;
 use App\thongtinxe;
@@ -17,8 +18,7 @@ class banxicontroller extends Controller
     public function index()
     {
         $banxis = banxi::latest()->paginate(10);
-
-        return view('banxi.index',compact('banxis'))->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('banxi.index',compact('banxis','thongtinxes'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
     public function search (Request $request){
         $search =$request->get('search');
@@ -27,7 +27,9 @@ class banxicontroller extends Controller
 
     }
     public function xuathdbanxi(){
-        return view('banxi.hdbanxi');
+        $khos=kho::all();
+        $thongtinxes=thongtinxe::all();
+        return view('banxi.hdbanxi',compact('thongtinxes','khos'));
     }
     public function create()
     {
@@ -35,20 +37,32 @@ class banxicontroller extends Controller
       $thongtinxes=thongtinxe::all();
         return view('banxi.create',compact('khos','thongtinxes'));
     }
+    public function searchsokhung(Request $request)
+    {
+        $cities = thongtinxe::where('sokhung', 'LIKE', '%'.$request->input('term', '').'%')
+            ->get(['id', 'sdt as text']);
+        return ['results' => $cities];
+    }
+    public function selectsokhung(Request $request)
+    {
+        $data=DB::table('thongtinxe')->find($request['sokhung']);
+        return response()->json(['data'=>$data]);
+    }
+
     public function store(Request $request)
     {
-        $request->validate([
-            'nhacc' => 'required',
-            'gianhap' => 'required',
-            'tinhtrang' => 'required',
-            'giaban' => 'required',
-            'noixuat' => 'required',
-            'ngayxuat' => 'required',
-            'kho_id' => 'required',
-            'thongtinxe_id' => 'required',
-        ]);
+
+            $request->validate([
+                'soHD' => 'required',
+                'gianhap' => 'required',
+                'noixuat' => 'required',
+                'ngayxuat' => 'required',
+                'kho_id' => 'required',
+                'thongtinxe_id' => 'required',
+            ]);
         banxi::create($request->all());
-        return redirect()->route('banxi.index')->with('success','thêm thành công .');
+
+        return redirect()->route('banxi.hdbanxi')->with('success','thêm thành công .');
     }
     public function show(banxi $banxi)
     {
@@ -65,7 +79,6 @@ class banxicontroller extends Controller
         $request->validate([
             'nhacc' => 'required',
             'gianhap' => 'required',
-            'tinhtrang' => 'required',
             'giaban' => 'required',
             'noixuat' => 'required',
             'ngayxuat' => 'required',

@@ -17,8 +17,6 @@ class CreateBanxiTable extends Migration
             $table->bigIncrements('id');
             $table->integer('soHD');
             $table->integer('gianhap');
-            $table->string('tinhtrang');
-            $table->integer('giaban');
             $table->string('noixuat');
             $table->dateTime('ngayxuat');
             $table->unsignedBigInteger('kho_id');

@@ -4,18 +4,14 @@
     <a href="{{ url('/home') }}">trang chủ</a>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center"> bán sỉ </h2>
+            <h2 class="text-center"> BÁN SỈ </h2>
         </div>
 
-    <div class="card-body">
-        <form action="" method="POST" enctype="multipart/form-data">
-            @csrf
-            <a class="btn btn-warning" href="{{ route('export') }}">xuất file</a>
-        </form>
-    </div>
+
     <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
-        <a class="btn btn-success " href="{{ route('banxi.create') }}"> thêm </a>
-        <a class="btn btn-success " href="{{ route('banxe_xuatxi') }}"> xuất hóa đơn</a>
+        <a class="btn btn-success " href="{{ route('banxi.create') }}"> Thêm </a>
+        <a class="btn btn-success " href="{{ route('hdbanxi') }}"> Xuất hóa đơn</a>
+
     </div>
     </div>
 
@@ -34,10 +30,8 @@
                 <th>số khung</th>
                 <th>loại xe</th>
                 <th>màu xe</th>
-                <th>tình trạng</th>
-                <th>gián bán</th>
                 <th>giá nhập</th>
-                <th>tình trạng</th>
+
                 <th width="280px">More</th>
             </tr>
             </thead>
@@ -46,19 +40,12 @@
                     <td>{{ ++$i }}</td>
                     <td>{{ $banxi->thongtinxe->somay }}</td>
                     <td>
-                        @if($banxe->status==0)
                             {{ $banxi->thongtinxe->sokhung}}
-                        @else
-                        @endif
                        </td>
                     <td>{{ $banxi->thongtinxe->loaixe}}</td>
                     <td>{{ $banxi->thongtinxe->mauxe}}</td>
-                    <td>{{ $banxi->tinhtrang }}</td>
-                    <td>{{ $banxi->giaban}}</td>
                     <td>{{ $banxi->gianhap}}</td>
-                    <td>
-                        <input data-id="{{$banxi->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="đã bán" data-off="chưa bán" {{ $banxi->status ? 'checked' : '' }}>
-                    </td>
+
                     <td>
                         <form action="{{ route('banxi.destroy',$banxi->id) }}" method="POST">
                             <a class="btn btn-info" href="{{ route('banxi.show',$banxi->id) }}">xem</a>
@@ -82,6 +69,9 @@
 @endsection
 @section('custom_js')
     <script src="{{ asset('assets/admin/js/plugins/tables/datatables/datatables.min.js') }}"></script>
+
+
+
     <script>
         $(document).ready( function () {
             if (!$().DataTable) {
@@ -103,12 +93,18 @@
             });
             $('.data-table').DataTable({
                 columnDefs: [{
-                    targets: [9],
+                    targets: [6],
                     searchable: false,
                     orderable: false,
                     visible: true
                 }]
             });
-        });
+
+            } );
+
+    </script>
+
+    <script >
+
     </script>
 @endsection

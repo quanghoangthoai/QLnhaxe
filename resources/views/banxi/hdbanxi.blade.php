@@ -5,28 +5,36 @@
             <div class="col-sm-12">
                 <h3 class="text-uppercase text-center alert alert-primary"> HÓA ĐƠN XUẤT KHO bán sĩ </h3>
             </div>
+            <form action="{{ route('banxi.store') }}" method="POST">
+                @csrf
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form_xuatnb mt-3">
-                        <form class="form-inline ">
+                        <div class="form-inline ">
                             <div class="form-group">
                                 <label for="exampleInputName2" class="text-uppercase">Ngày Xuất : </label>
-                                <input type="date" class="form-control" name="exampleInputName2" id="exampleInputName2" placeholder="Jane Doe">
+                                <input type="date" class="form-control" name="ngayxuat" id="" placeholder="Jane Doe">
                             </div>
                             <div class="form-group ">
                                 <label for="exampleInputEmail2" class="mahd">Mã HÓA ĐƠN :</label>
-                                <input type="text" class="form-control" name="exampleInputEmail2" id="exampleInputEmail2">
+                                <input type="text" class="form-control" name="maHD" id="exampleInputEmail2">
                             </div>
-                        </form>
-                        <form class="form-inline xuat_inline ">
+                        </div>
+                        <br>
+                        <div class="form-inline xuat_inline ">
                             <div class="form-group">
                                 <label for="exampleInputEmail4" class="denkho_bx">ĐẾN KHO :</label>
-                                <input type="text" class="form-control" name="exampleInputEmail2" id="exampleInputEmail2">
+                                <label for="khoxuat">Kho xuất</label>
+                                <select class="form-control" name="kho_id" id="nameid">
+                                    @foreach($khos as $kho)
+                                        <option value="{{ $kho->id }}">{{ $kho->dia_diem }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div id='app'>
                                 <a href="" @click.prevent="printme" class="btn btn-default"><i class="fa fa-print"></i> print</a>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div> <!-- hết row ngày xuất bán lẻ -->
@@ -36,7 +44,7 @@
                         <table class="table table-bordered table-hover text-uppercase">
                             <thead class=" text-uppercase">
                             <tr>
-                                <th scope="col">stt</th>
+
                                 <th scope="col">loại xe</th>
                                 <th scope="col">màu xe</th>
                                 <th scope="col">số khung</th>
@@ -52,10 +60,11 @@
                 </div>
             </div> <!-- hết row bảng xuất hóa đơn bán lẻ -->
             <div class="kiten_banxi">
-                <form>
+                <div>
+
                     <div class="form-row">
                         <div class="col pr-5">
-                            <label for="" class="text-uppercase lb_nv">nhân viên bán</label>
+                            <label for="" class="text-uppercase lb_nv">Nhân viên bán</label>
 
                         </div>
                         <div class="col">
@@ -64,17 +73,21 @@
                         </div>
                         <div class="col ">
                             <label for="" class="text-uppercase lb_nnbanxi">NGƯỜI NHẬN</label>
-
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
+            </form>
         </div>
 
     </div>
 @endsection
 @section('custom_js')
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
         <script>
@@ -84,12 +97,11 @@
                 count++;
                 var html = '';
                 html += '<tr>';
-                html += '<td><input type="text" name="item_name[]" class="form-control item_name" /></td>';
-                html += '<td><select name="item_category[]" class="form-control item_category" data-sub_category_id="'+count+'"><option value="">Select Category</option></select></td>';
-                html += '<td><select name="item_sub_category[]" class="form-control item_sub_category" id="item_sub_category'+count+'"><option value="">Select Sub Category</option></select></td>';
-                html += '<td><input type="text" name="item_name[]" class="form-control item_name" /></td>';
-                html += '<td><input type="text" name="item_name[]" class="form-control item_name" /></td>';
-                html += '<td><input type="text" name="item_name[]" class="form-control item_name" /></td>';
+                html += '<td><input type="text" id="loaixe"  name="thongtinxe_id[]" class="form-control item_name " /></td>';
+                html += '<td><input type="text" id="mauxe" name="thongtinxe_id[]" class="form-control item_name" /></td>';
+                html += '<td> <input type="text"  name="thongtinxe_id[]" class="form-control item_name" /> </td>';
+                html += '<td><input type="text"  name="thongtinxe_id[]" class="form-control item_name" /></td>';
+                html += '<td><input type="text" name="giaban[]" class="form-control item_name" /></td>';
                 html += '<td><button type="button" name="remove" class="btn btn-danger btn-xs remove"><span class="glyphicon glyphicon-minus"></span>-</button></td>';
                 $('tbody').append(html);
             });
@@ -99,5 +111,53 @@
             });
 
     </script>
+    <script >
+        $(document).ready(function() {
+            $('#sokhung').select2({
+                ajax: {
+                    url: '{{ route("sokhung.search") }}',
+                    dataType: 'json',
+                },
+            });
 
+            $("#sokhung").on('change',function () {
+                var sokhung = $(this).val();
+                var token = $("input[name='_token']").val();
+                $.ajax({
+                    url: '{{ route("selectsokhung") }}',
+                    type: 'POST',
+                    data:{_token:token,sokhung:sokhung},
+                    success: function (data) {
+                        document.getElementById('tenxe').value = data.data.id;
+                        document.getElementById('mauxe').value = data.data.id;
+                        document.getElementById('somay').value = data.data.id;
+
+                    },
+                    error: function (e) {
+                        console.log(e.message);
+                    }
+                });
+            })
+            $("#sdt").on('change',function () {
+                var sdt = $(this).val();
+                var token = $("input[name='_token']").val();
+                $.ajax({
+                    url: '{{ route("selectSdt") }}',
+                    type: 'POST',
+                    data:{_token:token,sdt:sdt},
+                    success: function (data) {
+                        document.getElementById('name').value = data.data.id;
+                        document.getElementById('ngaysinh').value = data.data.id;
+                        document.getElementById('phuong').value = data.data.id;
+                        document.getElementById('thanhpho').value = data.data.id;
+                        document.getElementById('tinh').value = data.data.id;
+
+                    },
+                    error: function (e) {
+                        console.log(e.message);
+                    }
+                });
+            })
+        });
+    </script>
 @endsection

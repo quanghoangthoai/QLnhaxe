@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center">bán xe</h2>
+            <h2 class="text-center">BÁN XE</h2>
         </div>
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
             <a class="btn btn-primary" href="{{ route('banxe.index') }}"> Back</a>
@@ -31,7 +31,7 @@
                         <label for="hoten">Số HD</label>
                         <input type="text" class="form-control" name="sohd"  >
                         <label for="hoten">Họ và Tên</label>
-                        <select class="form-control " id="nameid" name="khachhang_id" >
+                        <select class="form-control " id="name" name="khachhang_id" >
                             @foreach($khachhangs as $khachhang)
 
                                 <option value="{{ $khachhang->id }}">{{ $khachhang->name }}</option>
@@ -84,11 +84,10 @@
                 <div class=" col-sm-6">
                     <div class="form-group" >
                         <label for="tenxe">Số máy</label>
-                        <select class="form-control" id='somay' name='somay'>
+                        <select class="form-control" id='somay' name='thongtinxe_id'>
                             @foreach($thongtinxes as $thongtinxe)
                                 @if($thongtinxe->status==0)
                                     <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->somay }}
-
                                     </option>
                                 @else
                                 @endif
@@ -98,8 +97,8 @@
                         <select class="form-control " id="sokhung" name="thongtinxe_id">
                             @foreach($thongtinxes as $thongtinxe)
                                 @if($thongtinxe->status==0)
-                                <option value="{{ $thongtinxe->id }}">{{ $thongtinxe->sokhung }}
-
+                                <option
+                                    value="{{ $thongtinxe->id }}">{{ $thongtinxe->sokhung }}
                                 </option>
                                 @else
                                     @endif
@@ -169,7 +168,7 @@
             <!-- end ban xe-->
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">thêm</button>
+                <button type="submit" class="btn btn-primary">Thêm</button>
 
             </div>
         </div>
@@ -182,7 +181,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
     <script>
-
         function calc()
         {
             var n1 = parseFloat(document.getElementById('n1').value);
@@ -206,58 +204,54 @@
               dataType: 'json',
           },
       });
+          $('#sdt').select2({
+              ajax: {
+                  url: '{{ route("sdt.search") }}',
+                  dataType: 'json',
+              },
+          });
+      $("#sokhung").on('change',function () {
+          var sokhung = $(this).val();
+          var token = $("input[name='_token']").val();
+          $.ajax({
+              url: '{{ route("selectsokhung") }}',
+              type: 'POST',
+              data:{_token:token,sokhung:sokhung},
+              success: function (data) {
+                  document.getElementById('tenxe').value = data.data.id;
+                  document.getElementById('mauxe').value = data.data.id;
+                  document.getElementById('somay').value = data.data.id;
+
+              },
+              error: function (e) {
+                  console.log(e.message);
+              }
+          });
+      })
+          $("#sdt").on('change',function () {
+              var sdt = $(this).val();
+              var token = $("input[name='_token']").val();
+              $.ajax({
+                  url: '{{ route("selectSdt") }}',
+                  type: 'POST',
+                  data:{_token:token,sdt:sdt},
+                  success: function (data) {
+                      document.getElementById('name').value = data.data.id;
+                      document.getElementById('ngaysinh').value = data.data.id;
+                      document.getElementById('phuong').value = data.data.id;
+                      document.getElementById('thanhpho').value = data.data.id;
+                      document.getElementById('tinh').value = data.data.id;
+
+                  },
+                  error: function (e) {
+                      console.log(e.message);
+                  }
+              });
+          })
       });
     </script>
 
-{{--    <script type="text/javascript">--}}
 
-{{--        $("select[name='thongtinxe_id']").change(function(){--}}
-{{--            var thongtinxe_id = $(this).val();--}}
-{{--            var token = $("input[name='_token']").val();--}}
-{{--            $.ajax({--}}
-{{--                url: '{{route('getbanxe')}}',--}}
-{{--                method: 'post',--}}
-{{--                data: {thongtinxe_id:thongtinxe_id, _token:token},--}}
-{{--                success: function(data) {--}}
-{{--                    $("select[name='somay']").html('');--}}
-{{--                    $("select[name='somay']").html(data.options);--}}
-{{--                }--}}
-{{--            });--}}
-{{--        });--}}
-{{--    </script>--}}
-    <script>
-        $(document).ready(function(){
-            $('#sokhung').change(function(){
-                if($(this).val() != '')
-                {
-                    var select = $(this).attr("id");
-                    var value = $(this).val();
-                    var dependent = $(this).data('dependent');
-                    var _token = $('input[name="_token"]').val();
-                    $.ajax({
-                        url:"{{ route('dynamicdependent.fetch') }}",
-                        method:"POST",
-                        data:{select:select, value:value, _token:_token, dependent:dependent},
-                        success:function(result)
-                        {
-                            $('#'+dependent).html(result);
-                        }
-
-                    })
-                }
-            });
-
-            $('#country').change(function(){
-                $('#state').val('');
-                $('#city').val('');
-            });
-
-            $('#state').change(function(){
-                $('#city').val('');
-            });
-
-
-        });
 
 
 @endsection

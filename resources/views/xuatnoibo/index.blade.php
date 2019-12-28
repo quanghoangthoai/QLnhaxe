@@ -8,8 +8,8 @@
         </div>
 
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
-            <a class="btn btn-success " href="{{ route('xuatnoibo.create') }}"> thêm</a>
-            <a class="btn btn-success " href="{{ route('banxe_xuatnoibo') }}"> xuất nội bộ</a>
+            <a class="btn btn-success " href="{{ route('xuatnoibo.create') }}"> Thêm</a>
+            <a class="btn btn-success " href="{{ route('banxe_xuatnoibo') }}"> Xuất nội bộ</a>
         </div>
     </div>
 
@@ -23,7 +23,7 @@
         <table class="table table-bordered data-table">
             <thead>
             <tr>
-                <th>stt</th>
+                <th>Stt</th>
                 <th>Số máy</th>
                 <th>Số khung</th>
                 <th>Loại xe</th>

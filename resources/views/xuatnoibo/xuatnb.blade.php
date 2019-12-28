@@ -41,19 +41,16 @@
                         <table class="table table-bordered table-hover text-uppercase">
                             <thead class=" text-uppercase">
                             <tr>
-                                <th scope="col">stt</th>
                                 <th scope="col">loại xe</th>
                                 <th scope="col">màu xe</th>
                                 <th scope="col">số khung</th>
                                 <th scope="col">số máy</th>
                                 <th scope="col">giá bán</th>
+                                <th><button type="button" name="add" class="btn btn-success btn-xs add"><span class="glyphicon glyphicon-plus"></span>+</button></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
 
-                                <button class="btn btn-success" id="hdxuatnb"> + Thêm cột</button>
-                            </tr>
 
                             </tbody>
                         </table>
@@ -138,20 +135,25 @@
     </script>
             <script src="{{ asset('js/app.js') }}" defer></script>
 
-            <script>
-                $(document).ready(function () {
-                    $('#hdxuatnb').click(function (event) {
-                        var addcontrol = "<tr>"
-                        /* Act on the event */
-                        addcontrol += "<td ><input type='text' ></td>"
-                        addcontrol += "<td><input type='text'  id='newrow'></td>"
-                        addcontrol += "<td><input type='text'  id='newrow'></td>"
-                        addcontrol += "<td><input type='text'  id='newrow'></td>"
-                        addcontrol += "<td><input type='text'  id='newrow'></td>"
-                        addcontrol += "<td><input type='text'  id='newrow'></td>"
-                        addcontrol += "</tr>";
-                        $(" table tbody").append(addcontrol);
-                    });
-                });
-            </script>
+    <script>
+        var count = 0;
+
+        $(document).on('click', '.add', function(){
+            count++;
+            var html = '';
+            html += '<tr>';
+            html += '<td><input type="text" id="loaixe"  name="thongtinxe_id[]" class="form-control item_name " /></td>';
+            html += '<td><input type="text" id="mauxe" name="thongtinxe_id[]" class="form-control item_name" /></td>';
+            html += '<td> <input type="text"  name="thongtinxe_id[]" class="form-control item_name" /> </td>';
+            html += '<td><input type="text"  name="thongtinxe_id[]" class="form-control item_name" /></td>';
+            html += '<td><input type="text" name="giaban[]" class="form-control item_name" /></td>';
+            html += '<td><button type="button" name="remove" class="btn btn-danger btn-xs remove"><span class="glyphicon glyphicon-minus"></span>-</button></td>';
+            $('tbody').append(html);
+        });
+
+        $(document).on('click', '.remove', function(){
+            $(this).closest('tr').remove();
+        });
+
+    </script>
 @endsection
