@@ -150,4 +150,10 @@ class banxecontroller extends Controller
         $banxe->save();
         return response()->json(['success'=>'Đã thay đổi trạng thái.']);
     }
+    public function report()
+    {
+        $report = new \App\Reports\banxe();
+        $report->run();
+        return view('banxe.report',compact('report'));
+    }
 }

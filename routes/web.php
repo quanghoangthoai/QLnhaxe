@@ -75,6 +75,7 @@ Route::get('searchsdt', 'banxeController@searchSDT')->name('sdt.search');
 Route::get('searchbanxe', 'banxeController@searchSokhung')->name('sokhung.search');
 Route::post('getbanxe', 'banxeController@selectsokhung')->name('selectsokhung');
 Route::post('getsdt', 'banxeController@selectSDT')->name('selectSdt');
+Route::get('baocao', 'banxeController@report')->name('report');
 
 Route::get('show/{id}', 'banxeController@show')->name('banxe_show');
 Route::get('hoadonbanxe', 'banxeController@xuathdbanle')->name('banxe_xuat');

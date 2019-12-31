@@ -9,7 +9,7 @@
 
         <div class="col-lg-12 text-center" style="margin-top:10px;margin-bottom: 10px;">
             <a class="btn btn-success " href="{{ route('banxe.create') }}"> Nhập xe</a>
-
+            <a class="btn btn-success " href="{{ route('report') }}"> Báo cáo</a>
         </div>
     </div>
 
