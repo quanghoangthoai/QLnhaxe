@@ -1,33 +1,22 @@
 <?php
 namespace App\Reports;
+
 class MyReport extends \koolreport\KoolReport
 {
     use \koolreport\laravel\Friendship;
-    use \koolreport\bootstrap4\Theme;
-    use \koolreport\inputs\Bindable;
-    use \koolreport\inputs\POSTBinding;
-    protected function bindParamsToInputs()
-    {
-        return array(
-            "begin_date",
-            "end_date",
+    // By adding above statement, you have claim the friendship between two frameworks
+    // As a result, this report will be able to accessed all databases of Laravel
+    // There are no need to define the settings() function anymore
+    // while you can do so if you have other datasources rather than those
+    // defined in Laravel.
 
-        );
-    }
-        protected function setup()
-    {
-        $query_params = array();
-        if($this->params["bengin_date"]!=array())
-        {
-            $query_params[":begin_date"] = $this->params["begin_date"];
-        }
-        if($this->params["end_date"]!=array())
-        {
-            $query_params[":end_date"] = $this->params["end_date"];
-        }
 
-        $this->query("SELECT * FROM banxe")
-            ->params($query_params)
+    function setup()
+    {
+        // Let say, you have "sale_database" is defined in Laravel's database settings.
+        // Now you can use that database without any futher setitngs.
+        $this->src("qlnhaxe")
+            ->query("SELECT * FROM banxe")
             ->pipe($this->dataStore("banxe"));
     }
 }
